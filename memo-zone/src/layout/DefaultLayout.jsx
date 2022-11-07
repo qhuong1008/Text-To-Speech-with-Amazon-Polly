@@ -2,7 +2,13 @@ import React, { Component } from "react";
 
 class DefaultLayout extends Component {
   render() {
-    return <div></div>;
+    return (
+      <div>
+        <AppHeader />
+        <AppContent />
+        <AppFooter />
+      </div>
+    );
   }
 }
 
