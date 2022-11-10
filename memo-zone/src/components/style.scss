@@ -1,0 +1,27 @@
+.logo {
+  width: 40px;
+  height: 40px;
+  background-color: red;
+  border-radius: 50%;
+}
+.logo:hover {
+  background-color: blue;
+  .logo::after {
+    content: "";
+    width: 100px;
+    height: 100px;
+    background-color: white;
+    position: absolute;
+  }
+}
+.user-info {
+  position: absolute;
+  right: 20px;
+}
+.dropdown {
+  position: relative;
+}
+.dropdown-container {
+  position: absolute;
+  right: 100px;
+}

@@ -10,9 +10,9 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Routes>
-          <Routes path="*" name="Home" element={<DefaultLayout />} />
-          <Routes path="/register" name="Register" element={<Register />} />
-          <Routes path="/login" name="login" element={<Login />} />
+          <Route path="*" name="Home" element={<DefaultLayout />} />
+          <Route path="/register" name="Register" element={<Register />} />
+          <Route path="/login" name="login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     );
