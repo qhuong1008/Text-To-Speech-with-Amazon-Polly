@@ -9,15 +9,23 @@ html{
 body{
     color: #000;
     min-height: 100%;
+    min-height: 0;
     line-height: 1.5em;
     font-size: 14px;
 }
 div{
     display: block;
 }
+a{
+    text-decoration: none;
+}
+
 .course-info{
-    float: left;
-    width: 100%;    
+    // float: left;
+    width: 100%;  
+    max-width: 490px;
+    margin-top: -5px;
+    margin-left: 15px;  
     text-decoration: none;
 }
 .course-name{
@@ -33,10 +41,11 @@ div{
     font-size: 16px;
 }
 .course-progress-container{
+    float: left;
 
 }
 .levels{
-    //text-align: center;
+    text-align: center;
     margin: 0px 20px 0 0 ;
     max-width: 715px;
 }
@@ -53,7 +62,7 @@ line-height: 0;
 .level{
     display: inline-block;
     margin: 0 15px;
-    //text-align: center;
+    text-align: center;
     float: none;
     border-radius: 5px;
     cursor: pointer;
@@ -62,6 +71,7 @@ line-height: 0;
     transition: none;
     height: 189px;
     overflow: hidden;
+    margin: 16px;
 }
 .level:hover{
     box-shadow: 0 1px 5px 0 rgb(0 0 0/15%);

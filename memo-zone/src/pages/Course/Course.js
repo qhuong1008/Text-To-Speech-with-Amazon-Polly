@@ -33,7 +33,7 @@ const Course = () => {
           <div className="level-icon">
             <i className="level-ico"></i>
           </div>
-          <div className="level-title">Chủ đề môn học</div>
+          <div className="level-title">Chủ đề khóa học</div>
         </a>
         </div>
         </div>
