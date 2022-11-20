@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Learn from "./pages/Learn/Learn";
 import Xong from "./pages/Xong";
+import Login from "./pages/Login/Login";
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
         <Routes>
           <Route path="*" name="Home" element={<Learn />} />
           <Route path="/xong" element={<Xong />} />
+          <Route path="*" name="Home" element={<Login />} />
           {/* <Route path="wordtopic" name="Home" element={<WordTopic />} /> */}
         </Routes>
       </BrowserRouter>
