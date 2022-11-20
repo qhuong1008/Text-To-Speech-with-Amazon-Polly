@@ -12,7 +12,6 @@ const WordTopic = () => {
   let topic = course.courseTopics[0];
   let topic_name = topic.topicName;
   let wordlist = topic.wordlist;
-
   return (
     <>
       <AppHeader />
