@@ -3,7 +3,7 @@ import AppHeader from "../../components/AppHeader";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Scss_Course from"./Scss_Course.scss";
-// import themify_icons from "./themify_icons/themify_icons.css";
+// import themify_icons from ".pages/themify_icons/themify_icons.scss";
 
 // giả sử đã select được course từ trang trước đó
 import data from "../../data";
