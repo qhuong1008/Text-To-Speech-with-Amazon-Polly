@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import AppHeader from "../components/AppHeader";
+import AppHeader from "../../components/AppHeader";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
 // giả sử đã select được course từ trang trước đó
-import data from "../data";
+import data from "../../data";
 const Course = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const wordlist = data[0].courseTopics[0].wordlist;
