@@ -3,6 +3,8 @@ import AppHeader from "../../components/AppHeader";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import Scss_Course from"./Scss_Course.scss";
+// import themify_icons from "./themify_icons/themify_icons.css";
+
 // giả sử đã select được course từ trang trước đó
 import data from "../../data";
 const Course = () => {
@@ -24,6 +26,8 @@ const Course = () => {
             dí dỏm đa dụng.
           </div>
         </div>
+        <div id ="content">
+        <div className="course-progress-container">
         <div className="levels clearfix">
         <a className="level clearfix" href ="#">
           <div className="level-icon">
@@ -32,6 +36,8 @@ const Course = () => {
           <div className="level-title">Chủ đề môn học</div>
         </a>
         </div>
+        </div>
+        
   
 
   
@@ -45,6 +51,7 @@ const Course = () => {
             Next
           </div>
         </div> */}
+        </div>
       </div>
     </div>
   );

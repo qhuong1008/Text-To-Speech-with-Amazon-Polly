@@ -40,6 +40,7 @@ div{
     margin: 0px 20px 0 0 ;
     max-width: 715px;
 }
+
 .clearfix::before, .clearfix::after{
 display: table;
 content: " ";
@@ -64,4 +65,13 @@ line-height: 0;
 }
 .level:hover{
     box-shadow: 0 1px 5px 0 rgb(0 0 0/15%);
+    text-decoration: none;
+}
+.level-title{
+    color: #000;
+    font-weight: bold;
+    width: auto;
+    padding: 10px 8px 0;
+    height: 35px;
+    text-decoration: none;
 }
