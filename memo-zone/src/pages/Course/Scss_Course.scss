@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-family: Arial, Helvetica, sans-serif;
+}
+body{
+    color: #000;
+    min-height: 100%;
+    line-height: 1.5em;
+    font-size: 14px;
+}
+div{
+    display: block;
+}
+.course-info{
+    float: left;
+    width: 100%;    
+    text-decoration: none;
+}
+.course-name{
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 40px;
+    margin: 20px 0 10px;
+    padding: 7px 0;
+}
+
+.course-description{
+    height: 100%;
+    font-size: 16px;
+}
+.course-progress-container{
+
+}
+.levels{
+    //text-align: center;
+    margin: 0px 20px 0 0 ;
+    max-width: 715px;
+}
+.clearfix::before, .clearfix::after{
+display: table;
+content: " ";
+line-height: 0;
+}
+.clearfix::after{
+    clear: both;
+}
+
+.level{
+    display: inline-block;
+    margin: 0 15px;
+    //text-align: center;
+    float: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 125px;
+    position: relative;
+    transition: none;
+    height: 189px;
+    overflow: hidden;
+}
+.level:hover{
+    box-shadow: 0 1px 5px 0 rgb(0 0 0/15%);
+}
