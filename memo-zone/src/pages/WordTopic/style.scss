@@ -1,0 +1,51 @@
+.wordtopic-container {
+  background-color: #fcfaf2;
+  padding-top: 20px;
+}
+.wordtopic-wordlist {
+  width: 640px;
+  height: auto;
+  margin: auto;
+}
+
+.topic-wrapper {
+  background-color: #fff;
+  padding: 10px 20px;
+}
+
+.course-name {
+  font-size: 25px;
+  font-weight: 700;
+  text-transform: uppercase;
+  &:hover {
+    cursor: pointer;
+    color: black;
+  }
+}
+
+.topic-title {
+  font-size: 20px;
+  font-weight: 650;
+}
+
+.learn-btn {
+  background-color: #4ba67f;
+  width: 150px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  position: relative;
+  margin-left: 444px;
+  font-size: 15px;
+  text-align: center;
+  font-weight: 600;
+  &:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+  }
+}
+
+.topic-wordlist {
+  background-color: #fff;
+  padding: 10px 20px;
+  margin: 20px 0;
+}

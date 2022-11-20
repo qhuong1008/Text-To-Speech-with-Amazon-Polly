@@ -1,0 +1,32 @@
+trang register + login
+trang Learn: chức năng học từ vựng 
+lần đầu tiên học: hiển thị đủ danh sách từ
+sau đó user có 3 lựa chọn: 
+	+ học thông thường (có phát âm, từ tiếng việt => mình chép kq tiếng anh)
+	+ học chỉ bằng listening (có phát âm => như trên) 
+	+ học chỉ bằng chép từ (ko có phát => )
+
+**Nếu có thời gian: 
+- Thêm phần tự tạo khóa học cho user (hệ thống tự động load âm thanh, user ko cần làm điều này)
+- làm thêm mục setting trong account
+trong setting: có thể set giọng của loa
+
+
+
+*** Phân công làm html
+Login (Huy)
+Error Page (ko tìm thấy trang này) (Liên)
+Home (Hiển thị danh sách khóa học [CourseList]) (Liên)
+CourseList (Liên) 
+Course [Hiển thị thông tin khóa học, danh sách chủ đề cần học [TopicList]] (Huy)
+WordTopic (hiển thị danh sách từ vựng cần học)
+Learn (hiển thị từng từ + nút Next bên cạnh
+       nếu tới từ cuối cùng thì có option: quay về trang chủ (trang chứa danh sách các topic)
+					   đi tới phần ôn tập)
+Practise: hiển thị 3 lựa chọn kiểm tra (tương đương vs 3 button):
+	+ (PracticeCommon) học thông thường (có phát âm, từ tiếng việt => mình chép kq tiếng anh)
+	+ (PractiseListening) học chỉ bằng listening (có phát âm => như trên) 
+	+ (PractiseWord) học chỉ bằng chép từ (ko có phát => )
+Complete: (Liên) 
+
+Nếu có tgian: đánh
