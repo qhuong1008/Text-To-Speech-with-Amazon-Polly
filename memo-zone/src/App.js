@@ -10,12 +10,8 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Routes>
-
-          <Route path="*" name="Home" element={<Course />} />
-
           <Route path="*" name="Home" element={<Learn />} />
           <Route path="/xong" element={<Xong />} />
-          <Route path="*" name="Home" element={<Login />} />
           {/* <Route path="wordtopic" name="Home" element={<WordTopic />} /> */}
         </Routes>
       </BrowserRouter>
