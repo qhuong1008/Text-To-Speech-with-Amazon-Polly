@@ -1,0 +1,46 @@
+$light-primary-color: #beeda6;
+$dark-primary-color: #013220;
+$primary-color: #38876a;
+
+.completepage-container {
+  //   background-color: white;
+  height: 100vh;
+}
+.result-label {
+  margin-top: 100px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 700;
+  .label {
+    margin: 40px;
+  }
+}
+
+.choice-container {
+  text-align: center;
+}
+.choice-label {
+  margin-top: 80px;
+  font-size: 30px;
+  font-weight: 700;
+}
+.choice-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+.choice-btn-item {
+  font-size: 20px;
+  background-color: $dark-primary-color;
+  margin: 5px 10px;
+  padding: 15px 13px;
+  border-radius: 10px;
+  color: #dcf6d0;
+  &:hover {
+    color: white;
+    cursor: pointer;
+    transform: scale(1.02);
+  }
+}
