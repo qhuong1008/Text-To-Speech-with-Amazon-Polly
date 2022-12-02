@@ -3,7 +3,7 @@ import Scss_Login from './Scss_Login.scss';
 
 
 const Login = ()=>{
-    return (<body>
+    return (<div class='body'>
         <div className="center">
           <h1>Login</h1>
           <form method="post">
@@ -25,7 +25,7 @@ const Login = ()=>{
           </form>
         </div>
     
-      </body>
+      </div>
       )
 }
 export default Login;

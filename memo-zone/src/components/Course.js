@@ -1,5 +1,5 @@
 const Course = (props) => {
-  return <>{props.courseItem}</>;
+  return <>course component{props.biengido}</>;
 };
 
 // trang này hiển thị danh sách chủ đề từ vựng
