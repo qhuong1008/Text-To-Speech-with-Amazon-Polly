@@ -30,6 +30,10 @@ class App extends Component {
             path="/course/:courseId/topic/:topicId/complete"
             element={<CompletePage />}
           ></Route>
+          <Route
+            path="/course/:courseId/topic/:topicId/practicecommon"
+            element={<PracticeCommon />}
+          ></Route>
         </Routes>
       </BrowserRouter>
     );

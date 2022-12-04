@@ -3,7 +3,7 @@ import GlobalStyle from "../GlobalStyle.scss";
 import data from "../../data";
 import AppHeader from "../../components/AppHeader";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import AWS from "aws-sdk";
 import $ from "jquery";
 import React from "react";
@@ -11,12 +11,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
 const PracticeCommon = (props) => {
-  let course = data[0];
+  const params = useParams();
+  let course = data.find((courseItem) => {
+    if (courseItem.courseId == params.courseId) return courseItem;
+  });
   let course_name = course.courseName;
-  let course_id = course.id;
-  let topic = course.courseTopics[0];
+  let topic = course.courseTopics.find((topicItem) => {
+    if (topicItem.topicId == params.topicId) return topicItem;
+  });
   let topic_name = topic.topicName;
   let wordlist = topic.wordlist;
+  console.log(course);
+  let course_id = course.id;
   const [currentIndex, setCurrentIndex] = useState(0);
   var word = wordlist[currentIndex];
 
@@ -167,7 +173,11 @@ const PracticeCommon = (props) => {
               </div>
             )}
             {currentIndex == wordlist.length - 1 && (
-              <Link className="next-btn" to="/xong" onClick={handleNextWord}>
+              <Link
+                className="next-btn"
+                to={`/course/${course.courseId}/topic/${topic.topicId}/complete`}
+                onClick={handleNextWord}
+              >
                 <FontAwesomeIcon icon={faAngleRight} />
                 Next
               </Link>

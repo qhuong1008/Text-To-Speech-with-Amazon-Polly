@@ -15,7 +15,6 @@ const Learn = (props) => {
   let course = data.find((courseItem) => {
     if (courseItem.courseId == params.courseId) return courseItem;
   });
-  console.log(course);
   let course_name = course.courseName;
   let topic = course.courseTopics.find((topicItem) => {
     if (topicItem.topicId == params.topicId) return topicItem;
