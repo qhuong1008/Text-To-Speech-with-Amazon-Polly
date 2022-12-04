@@ -12,7 +12,9 @@ const WordTopic = () => {
   });
   console.log(course);
   let course_name = course.courseName;
-  let topic = course.courseTopics[0];
+  let topic = course.courseTopics.find((topicItem) => {
+    if (topicItem.topicId == params.topicId) return topicItem;
+  });
   let topic_name = topic.topicName;
   let wordlist = topic.wordlist;
   return (

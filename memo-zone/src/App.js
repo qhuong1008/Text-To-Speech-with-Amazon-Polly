@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Learn from "./pages/Learn/Learn";
-import WordTopic from "./pages/WordTopic/WordTopic";
+import TopicList from "./pages/TopicList/TopicList";
 import Login from "./pages/Login/Login";
 import CompletePage from "./pages/CompletePage/CompletePage";
-import Course from "./pages/Course/Course";
+import WordTopic from "./pages/WordTopic/WordTopic";
 import Home from "./pages/Home/Home";
 import PracticeCommon from "./pages/Practice/PracticeCommon";
 import { formatCountdown } from "antd/lib/statistic/utils";
@@ -15,10 +14,14 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="*" name="Login" element={<Login />} />
+          <Route path="*" name="Login" element={<Home />} />
           <Route path="/homepage" name="Login" element={<Home />} />
           <Route path="/complete" name="Complete" element={<CompletePage />} />
-          <Route path="/course/:courseId/topic" element={<WordTopic />}></Route>
+          <Route path="/course/:courseId/topic" element={<TopicList />}></Route>
+          <Route
+            path="/course/:courseId/topic/:topicId"
+            element={<WordTopic />}
+          ></Route>
         </Routes>
       </BrowserRouter>
     );
