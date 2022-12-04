@@ -83,7 +83,7 @@ form .txt_field {
   text-decoration: underline;
   color: #beeda6;
 }
-input[type="submit"] {
+.login-btn {
   width: 100%;
   height: 50px;
   border: 1px solid;
@@ -94,9 +94,11 @@ input[type="submit"] {
   font-weight: 700;
   cursor: pointer;
   outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-input[type="submit"]:hover {
-  //border-color: red;
+.login-btn:hover {
   background-color: #beeda6;
   color: #013220;
   transition: 0.1s;
