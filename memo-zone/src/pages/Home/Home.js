@@ -4,7 +4,6 @@ import data from "../../data";
 import Course from "../../components/Course";
 
 const Home = () => {
-  var vonglap = 5;
   return (
     <div class="home-container">
       <AppHeader />

@@ -4,6 +4,7 @@ const data = [
     courseName: "toeic 100000++",
     courseTopics: [
       {
+        topicId: 1,
         topicName: "Contract",
         wordlist: [
           { eng: "Address", pronounce: "əˈdrɛs", viet: "Giải quyết (vấn đề)" },
@@ -33,6 +34,7 @@ const data = [
         ],
       },
       {
+        topicId: 2,
         topicName: "Marketing",
         wordlist: [
           { eng: "advanced", pronounce: " ədˈvɑːnst ", viet: " tiên tiến " },
@@ -58,6 +60,7 @@ const data = [
         ],
       },
       {
+        topicId: 3,
         topicName: "General Travel",
         wordlist: [
           { eng: "agent", pronounce: "ˈeɪʤənt", viet: "đại lý" },
@@ -91,6 +94,7 @@ const data = [
         ],
       },
       {
+        topicId: 4,
         topicName: "Business Planning",
         wordlist: [
           {
@@ -143,6 +147,7 @@ const data = [
     courseName: "toeic 200000++",
     courseTopics: [
       {
+        topicId: 5,
         topicName: "Contract",
         wordlist: [
           { eng: "Address", pronounce: "əˈdrɛs", viet: "Giải quyết (vấn đề)" },
@@ -172,6 +177,7 @@ const data = [
         ],
       },
       {
+        topicId: 6,
         topicName: "Marketing",
         wordlist: [
           { eng: "advanced", pronounce: " ədˈvɑːnst ", viet: " tiên tiến " },
@@ -197,6 +203,7 @@ const data = [
         ],
       },
       {
+        topicId: 7,
         topicName: "General Travel",
         wordlist: [
           { eng: "agent", pronounce: "ˈeɪʤənt", viet: "đại lý" },
@@ -230,6 +237,7 @@ const data = [
         ],
       },
       {
+        topicId: 8,
         topicName: "Business Planning",
         wordlist: [
           {
@@ -282,6 +290,7 @@ const data = [
     courseName: "toeic 300000++",
     courseTopics: [
       {
+        topicId: 1,
         topicName: "Contract",
         wordlist: [
           { eng: "Address", pronounce: "əˈdrɛs", viet: "Giải quyết (vấn đề)" },
@@ -311,6 +320,7 @@ const data = [
         ],
       },
       {
+        topicId: 1,
         topicName: "Marketing",
         wordlist: [
           { eng: "advanced", pronounce: " ədˈvɑːnst ", viet: " tiên tiến " },
