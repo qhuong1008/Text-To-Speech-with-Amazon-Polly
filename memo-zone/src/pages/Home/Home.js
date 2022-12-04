@@ -1,25 +1,27 @@
-import style from './style.scss'
+import style from "./style.scss";
 import AppHeader from "../../components/AppHeader";
-import data from '../../data'
-import Course from '../../components/Course'
+import data from "../../data";
+import Course from "../../components/Course";
 
 const Home = () => {
-    var vonglap = 5;
-    return (
-        <div class="home-container"> 
+  var vonglap = 5;
+  return (
+    <div class="home-container">
       <AppHeader />
-    <h1>Các khoá học</h1>
-    {
-       data.map(item=> { 
-        var courseid = item.courseId
-        return <>
-        <Course biengido={courseid}/>
-        <br/>
-        </>
-       })
-    }
+      <h1>Tất cả các khoá học</h1>
+      <div className="course-list">
+        {data.map((courseItem) => {
+          return (
+            <Course
+              courseId={courseItem.courseId}
+              courseName={courseItem.courseName}
+              courseTopics={courseItem.courseTopics}
+            />
+          );
+        })}
       </div>
-    )
-}
+    </div>
+  );
+};
 
 export default Home;

@@ -5,7 +5,7 @@ import AppHeader from "../../components/AppHeader";
 import Word from "../Word/Word";
 import Xong from "../Xong";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import AWS from "aws-sdk";
 import $ from "jquery";
 import React from "react";
@@ -13,7 +13,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
 const Learn = (props) => {
-  let course = data[0];
+  const params = useParams();
+  let course = data.find((courseItem) => {
+    if (courseItem.courseId == params.courseId) return courseItem;
+  });
+  console.log(course);
   let course_name = course.courseName;
   let course_id = course.id;
   let topic = course.courseTopics[0];
