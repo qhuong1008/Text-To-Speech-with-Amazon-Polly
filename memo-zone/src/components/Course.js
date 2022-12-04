@@ -4,8 +4,8 @@ const Course = (props) => {
   return (
     <div className="course-container">
       <div className="course-name">{props.courseName}</div>
-      <NavLink to={`/course/${props.courseId}/learn`}>
-        <div className="learn-btn">Học từ mới</div>
+      <NavLink to={`/course/${props.courseId}/topic`}>
+        <div className="enterCourse-btn">Tham gia lớp học</div>
       </NavLink>
     </div>
   );

@@ -2,8 +2,6 @@ import style from "./style.scss";
 import GlobalStyle from "../GlobalStyle.scss";
 import data from "../../data";
 import AppHeader from "../../components/AppHeader";
-import Word from "../Word/Word";
-import Xong from "../Xong";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import AWS from "aws-sdk";
@@ -25,15 +23,14 @@ const PracticeCommon = (props) => {
   const [inputValue, setInputValue] = useState("");
   const [incorrect, setIncorrect] = useState(false);
 
-    const handleNextWord = () => {
-      if(inputValue == word.eng.toLowerCase()) {
-        setCurrentIndex(currentIndex + 1);
-        setInputValue("")
-      }
-      else {
-        setIncorrect(true);
-      }
-    };
+  const handleNextWord = () => {
+    if (inputValue == word.eng.toLowerCase()) {
+      setCurrentIndex(currentIndex + 1);
+      setInputValue("");
+    } else {
+      setIncorrect(true);
+    }
+  };
 
   var AWS = require("aws-sdk");
   var $ = require("jquery");

@@ -1,14 +1,17 @@
 import AppHeader from "../../components/AppHeader";
 import data from "../../data";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import style from "./style.scss";
 import GlobalStyle from "../GlobalStyle.scss";
 import Table from "react-bootstrap/Table";
 
 const WordTopic = () => {
-  let course = data[0];
+  const params = useParams();
+  let course = data.find((courseItem) => {
+    if (courseItem.courseId == params.courseId) return courseItem;
+  });
+  console.log(course);
   let course_name = course.courseName;
-  let course_id = course.id;
   let topic = course.courseTopics[0];
   let topic_name = topic.topicName;
   let wordlist = topic.wordlist;

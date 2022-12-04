@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Learn from "./pages/Learn/Learn";
-import Xong from "./pages/Xong";
+import WordTopic from "./pages/WordTopic/WordTopic";
 import Login from "./pages/Login/Login";
 import CompletePage from "./pages/CompletePage/CompletePage";
 import Course from "./pages/Course/Course";
@@ -17,7 +17,8 @@ class App extends Component {
         <Routes>
           <Route path="*" name="Login" element={<Login />} />
           <Route path="/homepage" name="Login" element={<Home />} />
-          <Route path="/course/:courseId/learn" element={<Learn />}></Route>
+          <Route path="/complete" name="Complete" element={<CompletePage />} />
+          <Route path="/course/:courseId/topic" element={<WordTopic />}></Route>
         </Routes>
       </BrowserRouter>
     );

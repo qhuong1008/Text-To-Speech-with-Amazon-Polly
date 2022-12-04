@@ -17,10 +17,10 @@ const CompletePage = () => {
             Học từ mới
           </Link>
           <Link to="/commonpractice" className="choice-btn-item">
-            Học thông thường
+            Ôn tập thông thường
           </Link>
           <Link to="/listenpractice" className="choice-btn-item">
-            Học nghe
+            Ôn tập Listening
           </Link>
         </div>
       </div>

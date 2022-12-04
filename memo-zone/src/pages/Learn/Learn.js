@@ -2,8 +2,6 @@ import style from "./style.scss";
 import GlobalStyle from "../GlobalStyle.scss";
 import data from "../../data";
 import AppHeader from "../../components/AppHeader";
-import Word from "../Word/Word";
-import Xong from "../Xong";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import AWS from "aws-sdk";
@@ -157,7 +155,11 @@ const Learn = (props) => {
               </div>
             )}
             {currentIndex == wordlist.length - 1 && (
-              <Link className="next-btn" to="/xong" onClick={handleNextWord}>
+              <Link
+                className="next-btn"
+                to="/complete"
+                onClick={handleNextWord}
+              >
                 <FontAwesomeIcon icon={faAngleRight} />
                 Next
               </Link>
