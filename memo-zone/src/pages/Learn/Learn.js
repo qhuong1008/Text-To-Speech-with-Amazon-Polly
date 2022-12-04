@@ -17,10 +17,13 @@ const Learn = (props) => {
   });
   console.log(course);
   let course_name = course.courseName;
-  let course_id = course.id;
-  let topic = course.courseTopics[0];
+  let topic = course.courseTopics.find((topicItem) => {
+    if (topicItem.topicId == params.topicId) return topicItem;
+  });
   let topic_name = topic.topicName;
   let wordlist = topic.wordlist;
+  console.log(course);
+  let course_id = course.id;
   const [currentIndex, setCurrentIndex] = useState(0);
   var word = wordlist[currentIndex];
 
@@ -157,7 +160,7 @@ const Learn = (props) => {
             {currentIndex == wordlist.length - 1 && (
               <Link
                 className="next-btn"
-                to="/complete"
+                to={`/course/${course.courseId}/topic/${topic.topicId}/complete`}
                 onClick={handleNextWord}
               >
                 <FontAwesomeIcon icon={faAngleRight} />

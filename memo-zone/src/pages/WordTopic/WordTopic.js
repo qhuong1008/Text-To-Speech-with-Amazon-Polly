@@ -25,7 +25,11 @@ const WordTopic = () => {
           <div className="topic-wrapper">
             <a className="course-name">{course_name}</a>
             <div className="topic-title">Chủ đề từ vựng: {topic_name}</div>
-            <div className="learn-btn">Học những từ này</div>
+            <Link
+              to={`/course/${params.courseId}/topic/${params.topicId}/learn`}
+            >
+              <div className="learn-btn">Học những từ này</div>
+            </Link>
           </div>
           <div className="topic-wordlist">
             <Table striped bordered hover>

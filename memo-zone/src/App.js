@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TopicList from "./pages/TopicList/TopicList";
-import Login from "./pages/Login/Login";
+import Learn from "./pages/Learn/Learn";
 import CompletePage from "./pages/CompletePage/CompletePage";
 import WordTopic from "./pages/WordTopic/WordTopic";
 import Home from "./pages/Home/Home";
@@ -21,6 +21,14 @@ class App extends Component {
           <Route
             path="/course/:courseId/topic/:topicId"
             element={<WordTopic />}
+          ></Route>
+          <Route
+            path="/course/:courseId/topic/:topicId/learn"
+            element={<Learn />}
+          ></Route>
+          <Route
+            path="/course/:courseId/topic/:topicId/complete"
+            element={<CompletePage />}
           ></Route>
         </Routes>
       </BrowserRouter>
