@@ -1,3 +1,5 @@
+@import "../GlobalStyle.scss";
+
 $light-primary-color: #beeda6;
 $dark-primary-color: #013220;
 $primary-color: #38876a;
@@ -11,6 +13,7 @@ $primary-color: #38876a;
   text-align: center;
   font-size: 50px;
   font-weight: 700;
+  color: #344648;
   .label {
     margin: 40px;
   }
@@ -21,8 +24,9 @@ $primary-color: #38876a;
 }
 .choice-label {
   margin-top: 80px;
-  font-size: 30px;
-  font-weight: 700;
+  font-size: 32px;
+  color: #344648;
+  font-weight: 500;
 }
 .choice-btn {
   display: flex;
@@ -32,15 +36,16 @@ $primary-color: #38876a;
   margin-top: 40px;
 }
 .choice-btn-item {
-  font-size: 20px;
-  background-color: $dark-primary-color;
-  margin: 5px 10px;
-  padding: 15px 13px;
-  border-radius: 10px;
-  color: #dcf6d0;
+  font-size: 24px;
+  background-color: #FFBB98;
+  margin: 4px 12px;
+  padding: 16px 12px;
+  border-radius: 12px;
+  color: #344648;
   &:hover {
-    color: white;
+    color: #FBE0C3;
     cursor: pointer;
     transform: scale(1.02);
+    background-color: #7D8E95;
   }
 }
