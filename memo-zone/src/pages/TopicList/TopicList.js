@@ -16,8 +16,9 @@ const TopicList = (props) => {
   let topics = course.courseTopics;
   return (
     <div>
+      <AppHeader />
       <div className="topiclist-container">
-        <AppHeader />
+        
         <div className="course-info">
           <div className="course-name">{course_name}</div>
           <div className="course-description">Course description</div>
@@ -25,7 +26,7 @@ const TopicList = (props) => {
         <div className="course-topics grid">
           {topics.map((topicItem) => {
             return (
-              <Link to={`/course/${course_id}/topic/${topicItem.topicId}`}>
+              <Link className="course-topic" to={`/course/${course_id}/topic/${topicItem.topicId}`}>
                 <Topic topicId={topicItem.topicId} />
               </Link>
             );
