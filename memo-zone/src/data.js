@@ -1,7 +1,7 @@
 const data = [
   {
     courseId: 1,
-    courseName: "toeic 100000++",
+    courseName: "toeic 500+",
     courseTopics: [
       {
         topicId: 1,

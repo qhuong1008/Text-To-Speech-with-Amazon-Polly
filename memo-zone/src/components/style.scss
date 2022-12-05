@@ -15,9 +15,8 @@
   padding: 0 24px;
   &:hover {
     cursor: pointer;
-    color: #FBE0C3;
-    background-color: #7D8E95;
-
+    color: #fbe0c3;
+    background-color: #7d8e95;
   }
 }
 .nav-link {
@@ -27,17 +26,18 @@
   font-weight: 500;
   color: #344648;
   text-decoration: none;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
   &:hover {
     cursor: pointer;
-    color: #FBE0C3;
-    background-color: #7D8E95;
+    color: #fbe0c3;
+    background-color: #7d8e95;
   }
 }
 .logo {
   width: 40px;
   height: 40px;
-  background-color: #FFBB98;
+  background-color: #ffbb98;
   border-radius: 50%;
 }
 .logo:hover {
@@ -74,6 +74,8 @@
   z-index: 1;
 }
 .course-container {
+  background-color: #fef5ec;
+
   text-align: center;
   width: 500px;
   border: 5px solid #e7eaf0;
@@ -82,17 +84,23 @@
 }
 
 .enterCourse-btn {
-  background-color: #38876a;
+  background-color: #ffbb98;
   padding: 10px 10px;
   border-radius: 0px 0px 10px 10px;
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
-  color: white;
+  color: black;
 }
 .topicItem-container {
+  display: flex;
   width: 200px;
   height: 250px;
-  background-color: #4fc59a;
+  background-color: #ffbb98;
   margin: 10px 10px;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  font-size: 30px;
+  font-weight: 700;
 }

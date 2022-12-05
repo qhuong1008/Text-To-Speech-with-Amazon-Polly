@@ -5,11 +5,11 @@ $dark-primary-color: #013220;
 $primary-color: #38876a;
 
 .completepage-container {
-  //   background-color: white;
+  background-color: #f9ebdc;
   height: 100vh;
 }
 .result-label {
-  margin-top: 100px;
+  padding-top: 100px;
   text-align: center;
   font-size: 50px;
   font-weight: 700;
@@ -37,15 +37,15 @@ $primary-color: #38876a;
 }
 .choice-btn-item {
   font-size: 24px;
-  background-color: #FFBB98;
+  background-color: #ffbb98;
   margin: 4px 12px;
   padding: 16px 12px;
   border-radius: 12px;
   color: #344648;
   &:hover {
-    color: #FBE0C3;
+    color: #fbe0c3;
     cursor: pointer;
     transform: scale(1.02);
-    background-color: #7D8E95;
+    background-color: #7d8e95;
   }
 }

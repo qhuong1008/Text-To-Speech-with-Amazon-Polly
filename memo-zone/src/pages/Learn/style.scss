@@ -1,12 +1,11 @@
 @import "../GlobalStyle.scss";
 
-
 .learn-container {
-    background-color: #fbe0c34f;
-    width: 100%;
-    height: 100vh;
-    padding: 80px 100px;
-    margin-top: 46px;
+  background-color: #fbe0c34f;
+  width: 110%;
+  height: 100vh;
+  padding: 80px 100px;
+  margin-top: 46px;
 }
 .word-container {
   padding-top: 20px;
@@ -15,11 +14,11 @@
 }
 
 .wordItem {
-  margin: 0 20px;
+  margin: 0 40px;
   .word-info {
     border-radius: 20px;
     background-color: white;
-    width: 500px;
+    width: 300px;
     margin-left: 70px;
   }
   .next-btn {
@@ -65,7 +64,7 @@
 }
 
 .pronounce {
-  background-color: #FBE0C3;
+  background-color: #fbe0c3;
   padding: 8px 0px;
   width: 100px;
   border-radius: 10px;
@@ -77,12 +76,12 @@
     margin-right: 8px;
     padding: 0px 8px;
     border: none;
-    background-color: #FFBB98;
+    background-color: #ffbb98;
     &:hover {
-        cursor: pointer;
-        color: #FBE0C3;
-        background-color: #70747e;
-        // opacity: 0.6;
-      }
+      cursor: pointer;
+      color: #fbe0c3;
+      background-color: #70747e;
+      // opacity: 0.6;
+    }
   }
 }

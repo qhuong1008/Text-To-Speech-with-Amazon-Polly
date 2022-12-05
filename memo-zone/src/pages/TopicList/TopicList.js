@@ -19,17 +19,19 @@ const TopicList = (props) => {
       <div className="topiclist-container">
         <AppHeader />
         <div className="course-info">
-          <div className="course-name">{course_name}</div>
-          <div className="course-description">Course description</div>
-        </div>
-        <div className="course-topics grid">
-          {topics.map((topicItem) => {
-            return (
-              <Link to={`/course/${course_id}/topic/${topicItem.topicId}`}>
-                <Topic topicId={topicItem.topicId} />
-              </Link>
-            );
-          })}
+          {/* <div className="course-description">Course description</div> */}
+          <div className="course-topics">
+            <div className="course-name">{course_name}</div>
+            <div className="grid">
+              {topics.map((topicItem) => {
+                return (
+                  <Link to={`/course/${course_id}/topic/${topicItem.topicId}`}>
+                    <Topic topicId={topicItem.topicId} />
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </div>
