@@ -1,12 +1,30 @@
 import Scss_Login from "./Scss_Login.scss";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import userdata from "../../userdata";
+import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [validate, setValidate] = useState(false);
+
   const handleLogin = () => {
-    window.location.href = "http://localhost:3000/homepage";
+    if (username == "" || password == "") {
+      alert("Vui lòng nhập đủ thông tin!");
+    } else {
+      let user = userdata.find((userItem) => {
+        if (userItem.username == username && userItem.password == password) {
+          return userItem;
+        }
+      });
+      if (user == undefined) {
+        alert("User not exist!");
+      } else {
+        window.location.href = "/homepage";
+      }
+    }
+    // console.log(user);
   };
   return (
     <div class="body">
