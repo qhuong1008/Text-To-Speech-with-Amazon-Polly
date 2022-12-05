@@ -5,10 +5,10 @@
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
-body {
+.body {
   margin: 0;
   padding: 0;
-  background: linear-gradient(180deg, #beeda6, #013220);
+  background: linear-gradient(180deg, #f08e6e, #eb8867);
   height: 100vh;
   overflow: hidden;
 }
@@ -83,7 +83,7 @@ form .txt_field {
   text-decoration: underline;
   color: #beeda6;
 }
-input[type="submit"] {
+.signup-btn {
   width: 100%;
   height: 50px;
   border: 1px solid;
@@ -94,9 +94,12 @@ input[type="submit"] {
   font-weight: 700;
   cursor: pointer;
   outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
-input[type="submit"]:hover {
-  //border-color: red;
+.login-btn:hover {
   background-color: #beeda6;
   color: #013220;
   transition: 0.1s;
