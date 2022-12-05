@@ -3,8 +3,9 @@ import "bootstrap/dist/css/bootstrap.css";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import Dropdown from "react-bootstrap/Dropdown";
 import style from "./style.scss";
-
+import { FaUserCircle } from "react-icons/fa";
 const AppHeader = () => {
   return (
     <>
@@ -15,13 +16,22 @@ const AppHeader = () => {
             <Nav.Link href="/homepage">Home</Nav.Link>
             {/* <Nav.Link href="#features">Courses</Nav.Link> */}
             <Nav className="user-info">
-              <Nav.Link className="user-name">Alissa</Nav.Link>
-              <Nav.Link className="logo">
-                <img />
-              </Nav.Link>
+              <FaUserCircle className="logo" />
             </Nav>
           </Nav>
         </Container>
+        <Dropdown>
+          <Dropdown.Toggle
+            variant="success"
+            id="dropdown-basic"
+          ></Dropdown.Toggle>
+
+          <Dropdown.Menu className="dropdown-menu">
+            <Dropdown.Item href="/profile">Hồ sơ</Dropdown.Item>
+            <Dropdown.Item href="/login">Đăng xuất</Dropdown.Item>
+            <Dropdown.Item href="/settings">Cài đặt</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
       </Navbar>
     </>
   );
