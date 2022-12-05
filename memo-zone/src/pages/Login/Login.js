@@ -36,7 +36,7 @@ const Login = () => {
             Login
           </div>
           <div className="signup_link">
-            Not a member? <a href="#">Signup</a>
+            Not a member? <a href="/signup">Signup</a>
           </div>
         </form>
       </div>

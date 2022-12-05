@@ -6,6 +6,8 @@ import CompletePage from "./pages/CompletePage/CompletePage";
 import WordTopic from "./pages/WordTopic/WordTopic";
 import Home from "./pages/Home/Home";
 import PracticeCommon from "./pages/Practice/PracticeCommon";
+import Login from "./pages/Login/Login";
+import Signup from "./pages/Signup/Signup";
 import { formatCountdown } from "antd/lib/statistic/utils";
 // import CourseList from "./pages/CourseList/CourseList";
 
@@ -14,7 +16,8 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="*" name="Login" element={<Home />} />
+          <Route path="*" name="Login" element={<Login />} />
+          <Route path="/signup" name="Login" element={<Signup />} />
           <Route path="/homepage" name="Login" element={<Home />} />
           <Route path="/complete" name="Complete" element={<CompletePage />} />
           <Route path="/course/:courseId/topic" element={<TopicList />}></Route>
