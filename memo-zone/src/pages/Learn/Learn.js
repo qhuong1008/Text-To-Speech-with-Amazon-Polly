@@ -34,21 +34,14 @@ const Learn = (props) => {
   var $ = require("jquery");
   AWS.config.region = "us-east-1"; // Region
   AWS.config.credentials = new AWS.Credentials(
-    "ASIASCU3UYOHS5MY75VI",
-    "ipWt7BfnYg6wtcTkgxuSBSWc22O1nbtAcvaX4PYb",
-    "FwoGZXIvYXdzEH8aDBnFmpx4EWSbSVwZGSLPATbeXP1LlM5Kh7y4v8Pda4UmSNBp/fIXhc81mqAUlLnkKxkPVnJU6a9e6NCzl/7PFBiemA2RjnuobqHlOBCtbB6H4tN/AEXGPoPr8OKW8bKfdNQfAOO/i9V4RawvAtChSY96XexmmBmOKq6ItMPWuD0fNhEgTYKgHcRrU3H5EIoMImnt8cvxyRAzxGUY5ZEhY4jy+XK26BTxgjqgEZFZpwz8gfWtNYVi0l+looKdwRCbMSgN+aV5YY+sPsqvUVtT5SvzHBagchAGvM2Tg+vjxCjW0uibBjItdAzd6z2GRKa8rDwWb+RKq3Yvg8DTvZaW2VoY1bWfam1aG5L7NB7noyW5TngR"
+    "ASIASCU3UYOHWDIR67P7",
+    "lPDZk8Z8dyidQI1ZMeq1lqcX75kuMWacsAUcB84A",
+    "FwoGZXIvYXdzEOP//////////wEaDKFEqnliHQ2VAru58CLPARBXiZFcNsO1+V2I0oU4T3u5BfFebiQbgnXpfyD5n/HMEKPhqOXllpOFRys99cBtHU9hp2rJ2m0C7zEnG4s9zuaT8T8xI3BxTRxDZsReVb78aBpWME+t9AGLkn+FDq7QUDv8tdQMx5FuFrH4EIgqkbNDjRm9XgA3ao3HI1xnsmgnhhUusZ+KMwifUxnMxTZnKDr3UjhOwkkwXBOF6B0A9uQW3yX7cp126AWnKs8VVEKs/kGOvcyVFWlpkpRYAtWOuTp7y11SNXHfMZ3RMH+quCjcgbecBjItCX1R6dIfenBLzvk1nGNlOx0tm7dSegaj/M6jNIEsfE5sZ/EZvrJrkHp4KWfw"
   );
   var polly = new AWS.Polly();
   function doSynthesize(text, languageCode) {
     var voiceId;
     var textType = "text";
-    // // Get the checkbox
-    // var checkBox = document.getElementById("toggle");
-
-    // // If the checkbox is checked, display the output text
-    // if (checkBox.checked == true) {
-    //   textType = "ssml";
-    // }
     switch (languageCode) {
       case "En-US":
         voiceId = "Matthew";

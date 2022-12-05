@@ -34,7 +34,10 @@ const CompletePage = () => {
           >
             Ôn tập thông thường
           </Link>
-          <Link to="/listenpractice" className="choice-btn-item">
+          <Link
+            to={`/course/${course.courseId}/topic/${topic.topicId}/practicelistening`}
+            className="choice-btn-item"
+          >
             Ôn tập Listening
           </Link>
         </div>

@@ -22,6 +22,8 @@ const Login = () => {
         alert("User not exist!");
       } else {
         window.location.href = "/homepage";
+        // window.location.href =
+        // "http://deploy-react-memozone.s3-website-us-east-1.amazonaws.com/homepage";
       }
     }
     // console.log(user);

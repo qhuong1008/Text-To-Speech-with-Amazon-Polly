@@ -10,7 +10,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
-const PracticeCommon = (props) => {
+const PracticeListening = (props) => {
   const params = useParams();
   let course = data.find((courseItem) => {
     if (courseItem.courseId == params.courseId) return courseItem;
@@ -139,10 +139,10 @@ const PracticeCommon = (props) => {
                     <label>TIẾNG ANH</label>
                     <div className="info english">{word.eng}</div>
                 </li> */}
-              <li className="word-info-item">
+              {/* <li className="word-info-item">
                 <label>TIẾNG VIỆT</label>
                 <div className="info english">{word.viet}</div>
-              </li>
+              </li> */}
               <li className="word-info-item">
                 <label>PHÁT ÂM</label>
                 <div className="info english pronounce">
@@ -203,4 +203,4 @@ const PracticeCommon = (props) => {
     </>
   );
 };
-export default PracticeCommon;
+export default PracticeListening;

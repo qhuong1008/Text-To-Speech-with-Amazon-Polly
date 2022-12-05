@@ -10,10 +10,10 @@ const AppHeader = () => {
     <>
       <Navbar className="header-wrapper" bg="primary" variant="dark">
         <Container>
-          <Navbar.Brand href="#home">Memo Zone</Navbar.Brand>
+          <Navbar.Brand href="/homepage">Memo Zone</Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Courses</Nav.Link>
+            <Nav.Link href="/homepage">Home</Nav.Link>
+            {/* <Nav.Link href="#features">Courses</Nav.Link> */}
             <Nav className="user-info">
               <Nav.Link className="user-name">Alissa</Nav.Link>
               <Nav.Link className="logo">
