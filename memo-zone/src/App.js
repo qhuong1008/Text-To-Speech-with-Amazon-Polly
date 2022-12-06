@@ -9,6 +9,8 @@ import PracticeCommon from "./pages/Practice/PracticeCommon";
 import PracticeListening from "./pages/PracticeListening/PracticeListening";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
+import MyCourses from "./pages/MyCourses/MyCourses";
+import EditMyCourse from "./pages/EditMyCourse/EditMyCourse";
 import { formatCountdown } from "antd/lib/statistic/utils";
 // import CourseList from "./pages/CourseList/CourseList";
 
@@ -20,6 +22,12 @@ class App extends Component {
           <Route path="*" name="Login" element={<Login />} />
           <Route path="/signup" name="Login" element={<Signup />} />
           <Route path="/homepage" name="Login" element={<Home />} />
+          <Route path="/mycourses" name="MyCourses" element={<MyCourses />} />
+          <Route
+            path="/editmycourse"
+            name="EditMyCourse"
+            element={<EditMyCourse />}
+          />
           <Route path="/complete" name="Complete" element={<CompletePage />} />
           <Route path="/course/:courseId/topic" element={<TopicList />}></Route>
           <Route

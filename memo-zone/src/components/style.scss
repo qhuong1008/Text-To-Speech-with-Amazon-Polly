@@ -97,6 +97,9 @@
   font-size: 20px;
   font-weight: bold;
   color: black;
+  &:hover {
+    background-color: #f6ab86;
+  }
 }
 .topicItem-container {
   display: flex;

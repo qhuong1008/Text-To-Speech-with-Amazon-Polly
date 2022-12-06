@@ -75,3 +75,18 @@
   vertical-align: top;
   border-color: var(--bs-table-border-color);
 }
+.newcourse-item {
+  margin: 10px 0;
+}
+.addword-btn {
+  background-color: #ffbb98;
+  padding: 10px 10px;
+  width: 200px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  &:hover {
+    background-color: #f9ac85;
+  }
+}
