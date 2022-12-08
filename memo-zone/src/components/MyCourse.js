@@ -4,7 +4,7 @@ const MyCourse = (props) => {
   return (
     <div className="course-container">
       <div className="course-name">{props.courseName}</div>
-      <NavLink to={`/editmycourse`}>
+      <NavLink to={`/mycourses/${props.courseId}/topic`}>
         <div className="enterCourse-btn">Edit lớp học</div>
       </NavLink>
     </div>

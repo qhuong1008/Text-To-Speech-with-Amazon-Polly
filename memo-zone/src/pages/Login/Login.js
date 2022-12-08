@@ -1,8 +1,10 @@
 import Scss_Login from "./Scss_Login.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import userdata from "../../userdata";
+import axios from "axios";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { UserApi } from "../../api/index";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -28,6 +30,25 @@ const Login = () => {
     }
     // console.log(user);
   };
+
+  // database test
+  const [datauser, setDatauser] = useState();
+  // const getUsers = async () => {
+  //   const response = await axios.get("http://localhost:8090/api/users");
+  //   setDatauser(response.data);
+  // };
+  console.log(datauser);
+
+  const loadDataUser = () => {
+    UserApi.getUsers()
+      .then((response) => {
+        setDatauser(response.data);
+      })
+      .catch((error) => console.log(error));
+  };
+  useEffect(() => {
+    loadDataUser();
+  }, []);
   return (
     <div class="body">
       <div className="center">

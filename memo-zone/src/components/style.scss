@@ -112,6 +112,10 @@
   color: black;
   font-size: 30px;
   font-weight: 700;
+  border-radius: 10px;
+  &:hover {
+    background-color: #fdae87;
+  }
 }
 .dropdown-menu {
   position: absolute;

@@ -4,6 +4,7 @@ import TopicList from "./pages/TopicList/TopicList";
 import Learn from "./pages/Learn/Learn";
 import CompletePage from "./pages/CompletePage/CompletePage";
 import WordTopic from "./pages/WordTopic/WordTopic";
+import MyWordTopic from "./pages/MyWordTopic/MyWordTopic";
 import Home from "./pages/Home/Home";
 import PracticeCommon from "./pages/Practice/PracticeCommon";
 import PracticeListening from "./pages/PracticeListening/PracticeListening";
@@ -11,7 +12,9 @@ import Login from "./pages/Login/Login";
 import Signup from "./pages/Signup/Signup";
 import MyCourses from "./pages/MyCourses/MyCourses";
 import EditMyCourse from "./pages/EditMyCourse/EditMyCourse";
+import MyTopicList from "./pages/MyTopicList/MyTopicList";
 import { formatCountdown } from "antd/lib/statistic/utils";
+import MyForm from "./MyForm";
 // import CourseList from "./pages/CourseList/CourseList";
 
 class App extends Component {
@@ -20,6 +23,7 @@ class App extends Component {
       <BrowserRouter>
         <Routes>
           <Route path="*" name="Login" element={<Login />} />
+          {/* <Route path="*" name="Login" element={<MyForm />} /> */}
           <Route path="/signup" name="Login" element={<Signup />} />
           <Route path="/homepage" name="Login" element={<Home />} />
           <Route path="/mycourses" name="MyCourses" element={<MyCourses />} />
@@ -28,11 +32,20 @@ class App extends Component {
             name="EditMyCourse"
             element={<EditMyCourse />}
           />
+          <Route
+            path="/mycourses/:courseId/topic"
+            name="MyTopicList"
+            element={<MyTopicList />}
+          />
           <Route path="/complete" name="Complete" element={<CompletePage />} />
           <Route path="/course/:courseId/topic" element={<TopicList />}></Route>
           <Route
             path="/course/:courseId/topic/:topicId"
             element={<WordTopic />}
+          ></Route>
+          <Route
+            path="/mycourses/:courseId/topic/:topicId"
+            element={<MyWordTopic />}
           ></Route>
           <Route
             path="/course/:courseId/topic/:topicId/learn"

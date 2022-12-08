@@ -1,0 +1,51 @@
+.topiclist-container {
+  width: 100%;
+  margin: 0;
+  background-color: #f9ebdc;
+}
+.topiclist-container .course-info {
+  width: 100%;
+  position: relative;
+  top: auto;
+  left: 0;
+}
+.grid {
+  width: 200px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 300px);
+  grid-auto-rows: 150px;
+  margin-right: 430px;
+}
+
+.course-info {
+  padding-top: 80px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.course-description {
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.course-name {
+  font-size: 30px !important;
+  font-weight: 700 !important;
+}
+.addtopic-btn {
+  margin-left: 10px;
+  margin-bottom: 10px;
+  padding: 10px 10px;
+  text-align: center;
+  border-radius: 10px;
+  background-color: #ffbb98;
+  width: 200px;
+  font-size: 20px;
+  font-weight: 700;
+  cursor: pointer;
+  &:hover {
+    background-color: #fdae87;
+  }
+}
