@@ -10,13 +10,6 @@ import data from "../../data";
 const TopicList = (props) => {
   const params = useParams();
 
-  // let course = data.find((courseItem) => {
-  //   if (courseItem.courseId == params.courseId) return courseItem;
-  // });
-  // let course_id = course.courseId;
-  // let course_name = course.courseName;
-  // let topics = course.courseTopics;
-
   const [course, setCourse] = useState({});
   const [courseName, setCourseName] = useState("");
 
@@ -53,6 +46,7 @@ const TopicList = (props) => {
           {/* <div className="course-description">Course description</div> */}
           <div className="course-topics">
             <div className="course-name">{courseName}</div>
+
             <div className="grid">
               {topics.map((topicItem) => {
                 return (

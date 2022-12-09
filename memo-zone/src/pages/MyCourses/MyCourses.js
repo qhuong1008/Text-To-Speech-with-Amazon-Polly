@@ -9,6 +9,7 @@ import { CourseApi } from "../../api/index";
 
 const MyCourses = () => {
   const params = useParams();
+
   const [modalShow, setModalShow] = React.useState(false);
   const [courses, setCourses] = useState([]);
 
@@ -27,22 +28,24 @@ const MyCourses = () => {
   return (
     <div class="home-container">
       <AppHeader accountId={params.accountId} />
-      <h1>Khoá học của tôi</h1>
-      <div className="createcourse-btn" onClick={() => setModalShow(true)}>
-        Tạo khóa học mới
-      </div>
+      <div className="mycourses-container">
+        <h1>Khoá học của tôi</h1>
+        <div className="createcourse-btn" onClick={() => setModalShow(true)}>
+          Tạo khóa học mới
+        </div>
 
-      <div className="course-list">
-        {courses.map((courseItem) => {
-          const courseName = courseItem.courseName;
-          return (
-            <MyCourse
-              accountId={params.accountId}
-              courseId={params.courseId}
-              courseName={courseItem.courseName}
-            />
-          );
-        })}
+        <div className="course-list">
+          {courses.map((courseItem) => {
+            const courseName = courseItem.courseName;
+            return (
+              <MyCourse
+                accountId={params.accountId}
+                courseId={courseItem.courseId}
+                courseName={courseItem.courseName}
+              />
+            );
+          })}
+        </div>
       </div>
       <NewCourseModal
         accountId={params.accountId}

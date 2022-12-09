@@ -2,20 +2,41 @@ import React, { Component } from "react";
 import AppHeader from "../../components/AppHeader";
 import { Link, useParams } from "react-router-dom";
 import MyTopic from "../../components/MyTopic";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { TopicApi, CourseApi } from "../../api/index";
 import NewTopicModal from "../NewTopicModal/NewTopicModal";
 import style from "./style.scss";
 
-import data from "../../data";
 const MyTopicList = (props) => {
   const params = useParams();
-  let course = data.find((courseItem) => {
-    if (courseItem.courseId == params.courseId) return courseItem;
-  });
-  let course_id = course.courseId;
-  let course_name = course.courseName;
-  let topics = course.courseTopics;
+  console.log(params);
+  const [course, setCourse] = useState({});
+  const [courseName, setCourseName] = useState("");
 
+  const loadCurrentCourse = () => {
+    CourseApi.getCourseById(params.courseId)
+      .then((response) => {
+        setCourse(response.data);
+
+        setCourseName(course[0].courseName);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const [topics, setTopics] = useState([]);
+
+  const loadAllTopics = () => {
+    TopicApi.getTopicByCourseId(params.courseId)
+      .then((response) => {
+        setTopics(response.data);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    loadCurrentCourse();
+    loadAllTopics();
+  }, []);
   const [modalShow, setModalShow] = useState(false);
   return (
     <div>
@@ -24,7 +45,7 @@ const MyTopicList = (props) => {
         <div className="course-info">
           {/* <div className="course-description">Course description</div> */}
           <div className="course-topics">
-            <div className="course-name">{course_name}</div>
+            <div className="course-name">{courseName}</div>
             <div className="addtopic-btn" onClick={() => setModalShow(true)}>
               Thêm chủ đề mới
             </div>
@@ -32,9 +53,12 @@ const MyTopicList = (props) => {
               {topics.map((topicItem) => {
                 return (
                   <Link
-                    to={`/${params.accountId}/mycourses/${course_id}/topic/${topicItem.topicId}`}
+                    to={`/${params.accountId}/mycourses/${params.courseId}/topic/${topicItem.topicId}`}
                   >
-                    <MyTopic topicId={topicItem.topicId} />
+                    <MyTopic
+                      topicId={topicItem.topicId}
+                      topicName={topicItem.topicName}
+                    />
                   </Link>
                 );
               })}
@@ -44,7 +68,7 @@ const MyTopicList = (props) => {
       </div>
       <NewTopicModal
         show={modalShow}
-        courseId={course_id}
+        courseId={params.courseId}
         onHide={() => setModalShow(false)}
       />
     </div>

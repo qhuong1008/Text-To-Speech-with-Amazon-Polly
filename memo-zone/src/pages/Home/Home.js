@@ -25,18 +25,20 @@ const Home = () => {
   return (
     <div class="home-container">
       <AppHeader accountId={params.accountId} />
-      <h1>Tất cả các khoá học</h1>
-      <div className="course-list">
-        {courses.map((courseItem) => {
-          return (
-            <Course
-              key={courseItem.courseId}
-              accountId={params.accountId}
-              courseId={courseItem.courseId}
-              courseName={courseItem.courseName}
-            />
-          );
-        })}
+      <div className="mycourses-container">
+        <h1>Tất cả các khoá học</h1>
+        <div className="course-list">
+          {courses.map((courseItem) => {
+            return (
+              <Course
+                key={courseItem.courseId}
+                accountId={params.accountId}
+                courseId={courseItem.courseId}
+                courseName={courseItem.courseName}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );
