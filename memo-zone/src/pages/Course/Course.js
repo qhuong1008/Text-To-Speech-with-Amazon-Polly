@@ -15,7 +15,7 @@ const Course = () => {
   const nextWordHandle = () => {};
   return (
     <div>
-      <AppHeader />
+      <AppHeader accountId={params.accountId} />
       <div className="course-container">
         <div className="course-info-container">
           <div className="course-name">{data[0].courseName}</div>

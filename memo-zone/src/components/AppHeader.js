@@ -6,15 +6,21 @@ import Navbar from "react-bootstrap/Navbar";
 import Dropdown from "react-bootstrap/Dropdown";
 import style from "./style.scss";
 import { FaUserCircle } from "react-icons/fa";
-const AppHeader = () => {
+const AppHeader = (props) => {
   return (
     <>
       <Navbar className="header-wrapper" bg="primary" variant="dark">
         <Container>
-          <Navbar.Brand href="/homepage">MemoZone</Navbar.Brand>
+          <Navbar.Brand href={`/homepage/${props.accountId}`}>
+            MemoZone
+          </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link href="/mycourses">My Courses</Nav.Link>
-            <Nav.Link href="/homepage">All Courses</Nav.Link>
+            <Nav.Link href={`/${props.accountId}/mycourses`}>
+              My Courses
+            </Nav.Link>
+            <Nav.Link href={`/homepage/${props.accountId} `}>
+              All Courses
+            </Nav.Link>
             {/* <Nav.Link href="#features">Courses</Nav.Link> */}
             <Nav className="user-info">
               <FaUserCircle className="logo" />

@@ -8,6 +8,12 @@ const getCourseById = async (courseId) => {
   return await axios.get(`http://localhost:8090/api/courses/${courseId}`);
 };
 
+const getCourseByAccountId = async (accountId) => {
+  return await axios.get(
+    `http://localhost:8090/api/courses/account/${accountId}`
+  );
+};
+
 const addCourse = async (course) => {
   return await axios.post("http://localhost:8090/api/courses", course);
 };
@@ -28,4 +34,5 @@ export {
   addCourse,
   updateCourseById,
   deleteCourseById,
+  getCourseByAccountId,
 };

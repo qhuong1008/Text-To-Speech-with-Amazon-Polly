@@ -8,6 +8,10 @@ const getWordById = async (wordId) => {
   return await axios.get(`http://localhost:8090/api/words/${wordId}`);
 };
 
+const getWordByTopicId = async (topicId) => {
+  return await axios.get(`http://localhost:8090/api/words/topic/${topicId}`);
+};
+
 const addWord = async (word) => {
   return await axios.post("http://localhost:8090/api/words", word);
 };
@@ -19,4 +23,11 @@ const updateWordById = async (word, wordId) => {
 const deleteWordById = async (wordId) => {
   return await axios.delete(`http://localhost:8090/api/words/${wordId}`);
 };
-export { getWords, getWordById, addWord, updateWordById, deleteWordById };
+export {
+  getWords,
+  getWordById,
+  addWord,
+  updateWordById,
+  deleteWordById,
+  getWordByTopicId,
+};

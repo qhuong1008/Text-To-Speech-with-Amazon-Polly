@@ -25,87 +25,60 @@ class App extends Component {
           <Route path="*" name="Login" element={<Login />} />
           {/* <Route path="*" name="Login" element={<MyForm />} /> */}
           <Route path="/signup" name="Login" element={<Signup />} />
-          <Route path="/homepage" name="Login" element={<Home />} />
-          <Route path="/mycourses" name="MyCourses" element={<MyCourses />} />
           <Route
-            path="/editmycourse"
+            path="/homepage/:accountId"
+            name="Home Page"
+            element={<Home />}
+          />
+          <Route
+            path="/:accountId/mycourses"
+            name="MyCourses"
+            element={<MyCourses />}
+          />
+          <Route
+            path="/:accountId/editmycourse"
             name="EditMyCourse"
             element={<EditMyCourse />}
           />
           <Route
-            path="/mycourses/:courseId/topic"
+            path="/:accountId/mycourses/:courseId/topic"
             name="MyTopicList"
             element={<MyTopicList />}
           />
-          <Route path="/complete" name="Complete" element={<CompletePage />} />
-          <Route path="/course/:courseId/topic" element={<TopicList />}></Route>
           <Route
-            path="/course/:courseId/topic/:topicId"
-            element={<WordTopic />}
-          ></Route>
-          <Route
-            path="/mycourses/:courseId/topic/:topicId"
-            element={<MyWordTopic />}
-          ></Route>
-          <Route
-            path="/course/:courseId/topic/:topicId/learn"
-            element={<Learn />}
-          ></Route>
-          <Route
-            path="/course/:courseId/topic/:topicId/complete"
-            element={<CompletePage />}
-          ></Route>
-          <Route
-            path="/course/:courseId/topic/:topicId/practicecommon"
-            element={<PracticeCommon />}
-          ></Route>
-          <Route
-            path="/course/:courseId/topic/:topicId/practicelistening"
-            element={<PracticeListening />}
-          ></Route>
-        </Routes>
-        {/* <Routes>
-          <Route path="*" name="Login" element={<Login />} />
-          <Route
-            path="http://deploy-react-memozone.s3-website-us-east-1.amazonaws.com/signup"
-            name="Login"
-            element={<Signup />}
-          />
-          <Route
-            path="http://deploy-react-memozone.s3-website-us-east-1.amazonaws.com/homepage"
-            name="Login"
-            element={<Home />}
-          />
-          <Route
-            path="http://deploy-react-memozone.s3-website-us-east-1.amazonaws.com/complete"
+            path="/:accountId/complete"
             name="Complete"
             element={<CompletePage />}
           />
           <Route
-            path="http://deploy-react-memozone.s3-website-us-east-1.amazonaws.com/course/:courseId/topic"
+            path="/:accountId/course/:courseId/topic"
             element={<TopicList />}
           ></Route>
           <Route
-            path="http://deploy-react-memozone.s3-website-us-east-1.amazonaws.com/course/:courseId/topic/:topicId"
+            path="/:accountId/course/:courseId/topic/:topicId"
             element={<WordTopic />}
           ></Route>
           <Route
-            path="http://deploy-react-memozone.s3-website-us-east-1.amazonaws.com/course/:courseId/topic/:topicId/learn"
+            path="/:accountId/mycourses/:courseId/topic/:topicId"
+            element={<MyWordTopic />}
+          ></Route>
+          <Route
+            path="/:accountId/course/:courseId/topic/:topicId/learn"
             element={<Learn />}
           ></Route>
           <Route
-            path="http://deploy-react-memozone.s3-website-us-east-1.amazonaws.com/course/:courseId/topic/:topicId/complete"
+            path="/:accountId/course/:courseId/topic/:topicId/complete"
             element={<CompletePage />}
           ></Route>
           <Route
-            path="http://deploy-react-memozone.s3-website-us-east-1.amazonaws.com/course/:courseId/topic/:topicId/practicecommon"
+            path="/:accountId/course/:courseId/topic/:topicId/practicecommon"
             element={<PracticeCommon />}
           ></Route>
           <Route
-            path="http://deploy-react-memozone.s3-website-us-east-1.amazonaws.com/course/:courseId/topic/:topicId/practicelistening"
+            path="/:accountId/course/:courseId/topic/:topicId/practicelistening"
             element={<PracticeListening />}
           ></Route>
-        </Routes> */}
+        </Routes>
       </BrowserRouter>
     );
   }

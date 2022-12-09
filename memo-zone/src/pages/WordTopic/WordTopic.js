@@ -4,29 +4,67 @@ import { Link, useParams } from "react-router-dom";
 import style from "./style.scss";
 import GlobalStyle from "../GlobalStyle.scss";
 import Table from "react-bootstrap/Table";
+import { useEffect, useState } from "react";
+import { TopicApi, CourseApi, WordApi } from "../../api/index";
 
 const WordTopic = () => {
   const params = useParams();
-  let course = data.find((courseItem) => {
-    if (courseItem.courseId == params.courseId) return courseItem;
-  });
-  console.log(course);
-  let course_name = course.courseName;
-  let topic = course.courseTopics.find((topicItem) => {
-    if (topicItem.topicId == params.topicId) return topicItem;
-  });
-  let topic_name = topic.topicName;
-  let wordlist = topic.wordlist;
+  // let course = data.find((courseItem) => {
+  //   if (courseItem.courseId == params.courseId) return courseItem;
+  // });
+  // let course_name = course.courseName;
+  // let topic = course.courseTopics.find((topicItem) => {
+  //   if (topicItem.topicId == params.topicId) return topicItem;
+  // });
+  // let topic_name = topic.topicName;
+  // let wordlist = topic.wordlist;
+  const [course, setCourse] = useState({});
+  const [courseName, setCourseName] = useState("");
+
+  const loadCurrentCourse = () => {
+    CourseApi.getCourseById(params.courseId)
+      .then((response) => {
+        setCourse(response.data);
+        setCourseName(course[0].courseName);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const [topic, setTopic] = useState({});
+  const [topicName, setTopicName] = useState("");
+  const loadCurrentTopic = () => {
+    TopicApi.getTopicById(params.topicId)
+      .then((response) => {
+        setTopic(response.data);
+        setTopicName(topic.topicName);
+      })
+      .catch((error) => console.log(error));
+  };
+  const [wordlist, setWordlist] = useState([]);
+  const loadWordList = () => {
+    WordApi.getWordByTopicId(params.topicId)
+      .then((response) => {
+        setWordlist(response.data);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    loadCurrentCourse();
+    loadCurrentTopic();
+    loadWordList();
+  }, []);
+
   return (
     <>
-      <AppHeader />
+      <AppHeader accountId={params.accountId} />
       <div className="wordtopic-container">
         <div className="wordtopic-wordlist">
           <div className="topic-wrapper">
-            <a className="course-name">{course_name}</a>
-            <div className="topic-title">Chủ đề từ vựng: {topic_name}</div>
+            <a className="course-name">{courseName}</a>
+            <div className="topic-title">Chủ đề từ vựng: {topicName}</div>
             <Link
-              to={`/course/${params.courseId}/topic/${params.topicId}/learn`}
+              to={`/${params.accountId}/course/${params.courseId}/topic/${params.topicId}/learn`}
             >
               <div className="learn-btn">Học những từ này</div>
             </Link>

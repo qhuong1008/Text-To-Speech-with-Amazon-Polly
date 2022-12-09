@@ -8,10 +8,11 @@ import MyVerticallyCenteredModal from "../MyVerticallyCenteredModal/MyVertically
 
 import data from "../../data";
 const EditMyCourse = () => {
+  const params = useParams();
   const [modalShow, setModalShow] = React.useState(false);
   return (
     <>
-      <AppHeader />
+      <AppHeader accountId={params.accountId} />
       <div className="wordtopic-container">
         <div className="wordtopic-wordlist">
           <div className="topic-wrapper">

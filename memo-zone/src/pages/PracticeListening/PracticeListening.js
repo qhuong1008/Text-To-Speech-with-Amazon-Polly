@@ -130,7 +130,7 @@ const PracticeListening = (props) => {
   };
   return (
     <>
-      <AppHeader />
+      <AppHeader accountId={params.accountId} />
       <div className="learn-container">
         <div className="word-container">
           <div className="wordItem">

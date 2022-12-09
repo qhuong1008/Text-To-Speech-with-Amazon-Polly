@@ -4,7 +4,7 @@ const Course = (props) => {
   return (
     <div className="course-container">
       <div className="course-name">{props.courseName}</div>
-      <NavLink to={`/course/${props.courseId}/topic`}>
+      <NavLink to={`/${props.accountId}/course/${props.courseId}/topic`}>
         <div className="enterCourse-btn">Tham gia lớp học</div>
       </NavLink>
     </div>

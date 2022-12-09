@@ -2,32 +2,52 @@ import style from "./style.scss";
 import GlobalStyle from "../GlobalStyle.scss";
 import data from "../../data";
 import AppHeader from "../../components/AppHeader";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import AWS from "aws-sdk";
 import $ from "jquery";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
+import { TopicApi, CourseApi, WordApi } from "../../api/index";
 
 const Learn = (props) => {
   const params = useParams();
-  let course = data.find((courseItem) => {
-    if (courseItem.courseId == params.courseId) return courseItem;
-  });
-  let course_name = course.courseName;
-  let topic = course.courseTopics.find((topicItem) => {
-    if (topicItem.topicId == params.topicId) return topicItem;
-  });
-  let topic_name = topic.topicName;
-  let wordlist = topic.wordlist;
-  console.log(course);
-  let course_id = course.id;
-  const [currentIndex, setCurrentIndex] = useState(0);
-  var word = wordlist[currentIndex];
+  // let course = data.find((courseItem) => {
+  //   if (courseItem.courseId == params.courseId) return courseItem;
+  // });
+  // let course_name = course.courseName;
+  // let topic = course.courseTopics.find((topicItem) => {
+  //   if (topicItem.topicId == params.topicId) return topicItem;
+  // });
+  // let topic_name = topic.topicName;
+  // let wordlist = topic.wordlist;
+  // console.log(course);
+  // let course_id = course.id;
 
+  const [wordlist, setWordlist] = useState([]);
+  const loadWordList = () => {
+    WordApi.getWordByTopicId(params.topicId)
+      .then((response) => {
+        setWordlist(response.data);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    loadWordList();
+  }, []);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const [wordEng, setWordEng] = useState("");
+  const [wordPronounce, setWordPronounce] = useState("");
+  const [wordViet, setWordViet] = useState("");
+  // var word = wordlist[currentIndex];
   const handleNextWord = () => {
     setCurrentIndex(currentIndex + 1);
+    setWordEng(wordlist[currentIndex].eng);
+    setWordPronounce(wordlist[currentIndex].pronounce);
+    setWordViet(wordlist[currentIndex].viet);
   };
 
   var AWS = require("aws-sdk");
@@ -87,7 +107,7 @@ const Learn = (props) => {
   }
   const doSynthesizeInput = () => {
     // var text = document.getElementById("input").value.trim();
-    var text = word.eng;
+    var text = wordEng;
     if (!text) {
       return;
     }
@@ -96,7 +116,7 @@ const Learn = (props) => {
   };
   const doSynthesizeInput_US = () => {
     // var text = document.getElementById("input").value.trim();
-    var text = word.eng;
+    var text = wordEng;
     if (!text) {
       return;
     }
@@ -105,7 +125,7 @@ const Learn = (props) => {
   };
   const doSynthesizeInput_UK = () => {
     // var text = document.getElementById("input").value.trim();
-    var text = word.eng;
+    var text = wordEng;
     if (!text) {
       return;
     }
@@ -114,18 +134,18 @@ const Learn = (props) => {
   };
   return (
     <>
-      <AppHeader />
+      <AppHeader accountId={params.accountId} />
       <div className="learn-container">
         <div className="word-container">
           <div className="wordItem">
             <ul className="word-info">
               <li className="word-info-item">
                 <label>TIẾNG ANH</label>
-                <div className="info english">{word.eng}</div>
+                <div className="info english">{wordEng}</div>
               </li>
               <li className="word-info-item">
                 <label>TIẾNG VIỆT</label>
-                <div className="info english">{word.viet}</div>
+                <div className="info english">{wordViet}</div>
               </li>
               <li className="word-info-item">
                 <label>PHÁT ÂM</label>
@@ -152,7 +172,7 @@ const Learn = (props) => {
             {currentIndex == wordlist.length - 1 && (
               <Link
                 className="next-btn"
-                to={`/course/${course.courseId}/topic/${topic.topicId}/complete`}
+                to={`/${params.accountId}/course/${params.courseId}/topic/${params.topicId}/complete`}
                 onClick={handleNextWord}
               >
                 <FontAwesomeIcon icon={faAngleRight} />

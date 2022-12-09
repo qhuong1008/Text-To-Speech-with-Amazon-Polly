@@ -20,7 +20,7 @@ const MyTopicList = (props) => {
   return (
     <div>
       <div className="topiclist-container">
-        <AppHeader />
+        <AppHeader accountId={params.accountId} />
         <div className="course-info">
           {/* <div className="course-description">Course description</div> */}
           <div className="course-topics">
@@ -32,7 +32,7 @@ const MyTopicList = (props) => {
               {topics.map((topicItem) => {
                 return (
                   <Link
-                    to={`/mycourses/${course_id}/topic/${topicItem.topicId}`}
+                    to={`/${params.accountId}/mycourses/${course_id}/topic/${topicItem.topicId}`}
                   >
                     <MyTopic topicId={topicItem.topicId} />
                   </Link>

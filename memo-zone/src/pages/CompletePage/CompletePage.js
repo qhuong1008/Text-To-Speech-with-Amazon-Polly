@@ -14,7 +14,7 @@ const CompletePage = () => {
   });
   return (
     <div className="completepage-container">
-      <AppHeader />
+      <AppHeader accountId={params.accountId} />
       <div className="result-label">
         <div className="label">Bạn đã hoàn thành bài học!</div>
         <div className="label">Làm tốt lắm!</div>
@@ -23,19 +23,19 @@ const CompletePage = () => {
         <div className="choice-label">Tiếp theo dành cho bạn</div>
         <div className="choice-btn">
           <Link
-            to={`/course/${course.courseId}/topic`}
+            to={`/${params.accountId}/course/${course.courseId}/topic`}
             className="choice-btn-item"
           >
             Học từ mới
           </Link>
           <Link
-            to={`/course/${course.courseId}/topic/${topic.topicId}/practicecommon`}
+            to={`/${params.accountId}/course/${course.courseId}/topic/${topic.topicId}/practicecommon`}
             className="choice-btn-item"
           >
             Ôn tập thông thường
           </Link>
           <Link
-            to={`/course/${course.courseId}/topic/${topic.topicId}/practicelistening`}
+            to={`/${params.accountId}/course/${course.courseId}/topic/${topic.topicId}/practicelistening`}
             className="choice-btn-item"
           >
             Ôn tập Listening

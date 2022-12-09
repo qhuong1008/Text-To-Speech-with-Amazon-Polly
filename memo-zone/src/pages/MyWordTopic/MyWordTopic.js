@@ -22,7 +22,7 @@ const MyWordTopic = () => {
 
   return (
     <>
-      <AppHeader />
+      <AppHeader accountId={params.accountId} />
       <div className="wordtopic-container">
         <div className="wordtopic-wordlist">
           <div className="topic-wrapper">

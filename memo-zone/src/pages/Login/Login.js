@@ -10,34 +10,8 @@ const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [validate, setValidate] = useState(false);
-
-  const handleLogin = () => {
-    if (username == "" || password == "") {
-      alert("Vui lòng nhập đủ thông tin!");
-    } else {
-      let user = userdata.find((userItem) => {
-        if (userItem.username == username && userItem.password == password) {
-          return userItem;
-        }
-      });
-      if (user == undefined) {
-        alert("User not exist!");
-      } else {
-        window.location.href = "/homepage";
-        // window.location.href =
-        // "http://deploy-react-memozone.s3-website-us-east-1.amazonaws.com/homepage";
-      }
-    }
-    // console.log(user);
-  };
-
   // database test
   const [datauser, setDatauser] = useState();
-  // const getUsers = async () => {
-  //   const response = await axios.get("http://localhost:8090/api/users");
-  //   setDatauser(response.data);
-  // };
-  console.log(datauser);
 
   const loadDataUser = () => {
     AccountApi.getAccounts()
@@ -49,6 +23,27 @@ const Login = () => {
   useEffect(() => {
     loadDataUser();
   }, []);
+
+  const handleLogin = () => {
+    if (username == "" || password == "") {
+      alert("Vui lòng nhập đủ thông tin!");
+    } else {
+      let user = datauser.find((userItem) => {
+        if (userItem.username == username && userItem.password == password) {
+          return userItem;
+        }
+      });
+      if (user == undefined) {
+        alert("User not exist!");
+      } else {
+        window.location.href = `/homepage/${user.accountId}`;
+        // window.location.href =
+        // "http://deploy-react-memozone.s3-website-us-east-1.amazonaws.com/homepage";
+      }
+    }
+    // console.log(user);
+  };
+
   return (
     <div class="body">
       <div className="center">
