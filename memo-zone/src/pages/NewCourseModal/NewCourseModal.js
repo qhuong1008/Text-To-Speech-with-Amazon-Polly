@@ -1,23 +1,40 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import data from "../../data";
+import { TopicApi, CourseApi, WordApi } from "../../api/index";
 
 function NewCourseModal(props) {
   const [name, setName] = useState("");
   const course = {
-    courseId: 0,
     courseName: "",
-    courseTopics: [],
+    accountId: props.accountId,
   };
   const CourseAvailableCheck = (name) => {
     let check = false;
-    data.map((courseItem) => {
+    courselist.map((courseItem) => {
       if (name === courseItem.courseName) check = true;
     });
     return check;
   };
+
+  const [courselist, setCourselist] = useState([]);
+  const loadCourseList = () => {
+    CourseApi.getCourseByAccountId(props.accountId)
+      .then((response) => {
+        setCourselist(response.data);
+      })
+      .catch((error) => {});
+  };
+
+  const addNewCourse = () => {
+    console.log(course);
+    CourseApi.addCourse(course)
+      .then((response) => {})
+      .catch((error) => console.log(error));
+  };
+
   const handleAddNewCourse = () => {
     if (name === "") {
       alert("Vui lòng nhập tên khóa học!");
@@ -29,16 +46,19 @@ function NewCourseModal(props) {
         alert("Khóa học đã tồn tại!");
       else {
         // push course item to data list
-        course.courseId = data.length + 1;
-        data.push(course);
-
+        addNewCourse();
+        loadCourseList();
         // handle notification
         props.onHide();
-        console.log(CourseAvailableCheck(course.courseName));
         alert("Tạo khóa học thành công!");
       }
     }
   };
+
+  useEffect(() => {
+    loadCourseList();
+  }, []);
+
   return (
     <Modal
       {...props}

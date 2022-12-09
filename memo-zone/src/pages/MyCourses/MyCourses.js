@@ -3,13 +3,27 @@ import AppHeader from "../../components/AppHeader";
 import data from "../../data";
 import MyCourse from "../../components/MyCourse";
 import { Link, useParams } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NewCourseModal from "../NewCourseModal/NewCourseModal";
+import { CourseApi } from "../../api/index";
 
 const MyCourses = () => {
   const params = useParams();
-  console.log("check:", params.accountId);
   const [modalShow, setModalShow] = React.useState(false);
+  const [courses, setCourses] = useState([]);
+
+  const loadAllCourses = () => {
+    CourseApi.getCourseByAccountId(params.accountId)
+      .then((response) => {
+        setCourses(response.data);
+      })
+      .catch((error) => {});
+  };
+
+  useEffect(() => {
+    loadAllCourses();
+  }, []);
+
   return (
     <div class="home-container">
       <AppHeader accountId={params.accountId} />
@@ -19,18 +33,22 @@ const MyCourses = () => {
       </div>
 
       <div className="course-list">
-        {data.map((courseItem) => {
+        {courses.map((courseItem) => {
+          const courseName = courseItem.courseName;
           return (
             <MyCourse
               accountId={params.accountId}
-              courseId={courseItem.courseId}
+              courseId={params.courseId}
               courseName={courseItem.courseName}
-              courseTopics={courseItem.courseTopics}
             />
           );
         })}
       </div>
-      <NewCourseModal show={modalShow} onHide={() => setModalShow(false)} />
+      <NewCourseModal
+        accountId={params.accountId}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </div>
   );
 };
