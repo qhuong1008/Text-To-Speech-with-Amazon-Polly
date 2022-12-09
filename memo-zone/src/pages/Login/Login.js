@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import userdata from "../../userdata";
 import axios from "axios";
 import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
-import { UserApi } from "../../api/index";
+import { AccountApi } from "../../api/index";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -40,7 +40,7 @@ const Login = () => {
   console.log(datauser);
 
   const loadDataUser = () => {
-    UserApi.getUsers()
+    AccountApi.getAccounts()
       .then((response) => {
         setDatauser(response.data);
       })

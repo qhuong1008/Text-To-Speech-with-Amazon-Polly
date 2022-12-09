@@ -14,14 +14,11 @@ create table Account(
 )
 
 go
-insert into UserAccount values ('huongcute','123456',N'Phạm Quỳnh Hương','huong@gmail.com')
-insert into UserAccount values ('nguyenlien','123456',N'Nguyễn Thị Bích Liên','lien@gmail.com')
-insert into UserAccount values ('quanghuy','123456',N'Phạm Quang Huy','huy@gmail.com')
-go
 create table Course (
 	courseId int IDENTITY(1,1) primary key,
 	courseName nvarchar(200),
-	foreign key (accountId) references Account(accountId)
+	accountId int,
+	constraint fk_accountId foreign key (accountId) references Account(accountId) on delete cascade
 )
 
 go
@@ -29,7 +26,7 @@ create table Topic (
 	topicId int IDENTITY(1,1) primary key,
 	topicName nvarchar(200),
 	courseId int,
-	foreign key (courseId) references Course(courseId)
+	foreign key (courseId) references Course(courseId) on delete cascade
 )
 
 go
@@ -39,9 +36,13 @@ create table Word (
 	pronounce varchar(200),
 	viet nvarchar(200),
 	topicId int,
-	foreign key (topicId) references Topic(topicId)
+	foreign key (topicId) references Topic(topicId) on delete cascade
 )
 
+go
+insert into Account values ('huongcute','123456',N'Phạm Quỳnh Hương','huong@gmail.com')
+insert into Account values ('nguyenlien','123456',N'Nguyễn Thị Bích Liên','lien@gmail.com')
+insert into Account values ('quanghuy','123456',N'Phạm Quang Huy','huy@gmail.com')
 
 insert into Course values('toeic 200+')
 insert into Course values('toeic 300+')

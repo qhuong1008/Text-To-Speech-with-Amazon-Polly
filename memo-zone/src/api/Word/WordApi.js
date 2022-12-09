@@ -1,0 +1,22 @@
+import axios from "axios";
+
+const getWords = async () => {
+  return await axios.get("http://localhost:8090/api/words");
+};
+
+const getWordById = async (wordId) => {
+  return await axios.get(`http://localhost:8090/api/words/${wordId}`);
+};
+
+const addWord = async (word) => {
+  return await axios.post("http://localhost:8090/api/words", word);
+};
+
+const updateWordById = async (word, wordId) => {
+  return await axios.post(`http://localhost:8090/api/words/${wordId}`, word);
+};
+
+const deleteWordById = async (wordId) => {
+  return await axios.delete(`http://localhost:8090/api/words/${wordId}`);
+};
+export { getWords, getWordById, addWord, updateWordById, deleteWordById };
