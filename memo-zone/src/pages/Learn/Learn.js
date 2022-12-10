@@ -13,17 +13,6 @@ import { TopicApi, CourseApi, WordApi } from "../../api/index";
 
 const Learn = (props) => {
   const params = useParams();
-  // let course = data.find((courseItem) => {
-  //   if (courseItem.courseId == params.courseId) return courseItem;
-  // });
-  // let course_name = course.courseName;
-  // let topic = course.courseTopics.find((topicItem) => {
-  //   if (topicItem.topicId == params.topicId) return topicItem;
-  // });
-  // let topic_name = topic.topicName;
-  // let wordlist = topic.wordlist;
-  // console.log(course);
-  // let course_id = course.id;
 
   const [wordlist, setWordlist] = useState([]);
   const loadWordList = () => {
@@ -161,15 +150,13 @@ const Learn = (props) => {
             </ul>
           </div>
           <div className="wordItem">
-            {/* <div className="next-btn" onClick={handleNextWord}>
-          </div> */}
-            {currentIndex != wordlist.length - 1 && (
+            {currentIndex != wordlist.length && (
               <div className="next-btn" onClick={handleNextWord}>
                 <FontAwesomeIcon className="icon" icon={faAngleRight} />
                 Next
               </div>
             )}
-            {currentIndex == wordlist.length - 1 && (
+            {currentIndex == wordlist.length && (
               <Link
                 className="next-btn"
                 to={`/${params.accountId}/course/${params.courseId}/topic/${params.topicId}/complete`}
@@ -179,6 +166,13 @@ const Learn = (props) => {
                 Next
               </Link>
             )}
+            {/* <Link
+              className="next-btn"
+              to={`/${params.accountId}/course/${params.courseId}/topic/${params.topicId}/complete`}
+            >
+              <FontAwesomeIcon icon={faAngleRight} />
+              Next
+            </Link> */}
           </div>
         </div>
 

@@ -1,27 +1,55 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import data from "../../data";
+import { TopicApi, CourseApi } from "../../api/index";
 
 function NewTopicModal(props) {
+  const params = useParams();
+  console.log(props);
   const [name, setName] = useState("");
   const topic = {
-    topicId: 1,
     topicName: "",
-    wordlist: [],
+    courseId: props.courseId,
   };
-  const course = data.find((courseItem) => {
-    if (courseItem.courseId == props.courseId) return courseItem;
-  });
+  const [course, setCourse] = useState({});
+  const [courseName, setCourseName] = useState("");
+
+  const loadCurrentCourse = () => {
+    CourseApi.getCourseById(params.courseId)
+      .then((response) => {
+        setCourse(response.data);
+
+        setCourseName(course[0].courseName);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  const [topiclist, setTopiclist] = useState([]);
+  const loadTopicList = () => {
+    TopicApi.getTopicByCourseId(course.courseId)
+      .then((response) => {
+        setTopiclist(response.data);
+      })
+      .catch((error) => {});
+  };
+
   const TopicAvailableCheck = (name) => {
-    const topiclist = course.courseTopics;
     let check = false;
     topiclist.map((topicItem) => {
       if (name == topicItem.name) check = true;
     });
     return check;
   };
+
+  const addNewTopic = () => {
+    TopicApi.addTopic(topic)
+      .then((response) => {})
+      .catch((error) => console.log(error));
+  };
+
   const handleAddNewTopic = () => {
     if (name === "") {
       alert("Vui lòng nhập tên chủ đề!");
@@ -29,16 +57,12 @@ function NewTopicModal(props) {
     } else {
       console.log(name);
       let topicName = name.toLowerCase();
-      if (TopicAvailableCheck(topic) == true) alert("Chủ đề đã tồn tại!");
+      if (TopicAvailableCheck(topic.topicName) == true)
+        alert("Chủ đề đã tồn tại!");
       else {
         // push course item to data list
-        topic.topicId = course.courseTopics.length + 1;
         topic.topicName = topicName;
-        data.forEach((courseItem) => {
-          if (courseItem.courseId == course.courseId) {
-            courseItem.courseTopics.push(topic);
-          }
-        });
+        addNewTopic();
         // handle notification
         props.onHide();
         alert("Tạo chủ đề thành công!");
@@ -46,6 +70,11 @@ function NewTopicModal(props) {
       }
     }
   };
+
+  useEffect(() => {
+    loadCurrentCourse();
+    loadTopicList();
+  }, []);
   return (
     <Modal
       {...props}

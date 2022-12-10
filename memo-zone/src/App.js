@@ -45,11 +45,7 @@ class App extends Component {
             name="MyTopicList"
             element={<MyTopicList />}
           />
-          <Route
-            path="/:accountId/complete"
-            name="Complete"
-            element={<CompletePage />}
-          />
+
           <Route
             path="/:accountId/course/:courseId/topic"
             element={<TopicList />}

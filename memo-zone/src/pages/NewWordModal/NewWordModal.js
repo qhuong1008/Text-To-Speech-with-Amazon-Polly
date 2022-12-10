@@ -1,35 +1,45 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { TopicApi, CourseApi, WordApi } from "../../api/index";
 import data from "../../data";
 
 function NewWordModal(props) {
   const [english, setEnglish] = useState("");
   const [pronounce, setPronounce] = useState("");
   const [viet, setViet] = useState("");
-  const params = useParams();
 
-  let course = data.find((courseItem) => {
-    if (courseItem.courseId == params.courseId) return courseItem;
-  });
-  let topic = course.courseTopics.find((topicItem) => {
-    if (topicItem.topicId == params.topicId) return topicItem;
-  });
   let word = {
     eng: "",
     pronounce: "",
     viet: "",
+    topicId: props.topicId,
+  };
+  const addNewWord = () => {
+    WordApi.addWord(word)
+      .then((response) => {})
+      .catch((error) => console.log(error));
+  };
+
+  const [wordlist, setWordlist] = useState([]);
+  const loadWordList = () => {
+    WordApi.getWordByTopicId(props.topicId)
+      .then((response) => {
+        setWordlist(response.data);
+      })
+      .catch((error) => console.log(error));
   };
 
   const WordAvailableCheck = (name) => {
     let check = false;
-    topic.wordlist.map((wordItem) => {
+    wordlist.map((wordItem) => {
       if (wordItem.eng.toLowerCase() === name.toLowerCase()) check = true;
     });
     return check;
   };
+  let count = 0;
   const handleAddNewWord = () => {
     if (english === "" || pronounce == "" || viet == "") {
       alert("Vui lòng nhập đủ thông tin!");
@@ -42,15 +52,8 @@ function NewWordModal(props) {
         word.eng = english;
         word.pronounce = pronounce;
         word.viet = viet;
-        data.forEach((courseItem) => {
-          if (courseItem.courseId == course.courseId) {
-            courseItem.courseTopics.map((topicItem) => {
-              if (topicItem.topicId == topic.topicId) {
-                topicItem.wordlist.push(word);
-              }
-            });
-          }
-        });
+        addNewWord(word);
+        count++;
 
         // handle notification
         props.onHide();
@@ -59,6 +62,13 @@ function NewWordModal(props) {
       }
     }
   };
+
+  useEffect(() => {
+    loadWordList();
+  });
+  useEffect(() => {
+    loadWordList();
+  }, [count]);
   return (
     <Modal
       {...props}

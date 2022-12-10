@@ -2,7 +2,8 @@ import style from "./style.scss";
 import GlobalStyle from "../GlobalStyle.scss";
 import data from "../../data";
 import AppHeader from "../../components/AppHeader";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { TopicApi, CourseApi, WordApi } from "../../api/index";
 import { Link, useParams } from "react-router-dom";
 import AWS from "aws-sdk";
 import $ from "jquery";
@@ -15,15 +16,25 @@ const PracticeCommon = (props) => {
   let course = data.find((courseItem) => {
     if (courseItem.courseId == params.courseId) return courseItem;
   });
-  let course_name = course.courseName;
-  let topic = course.courseTopics.find((topicItem) => {
-    if (topicItem.topicId == params.topicId) return topicItem;
-  });
-  let topic_name = topic.topicName;
-  let wordlist = topic.wordlist;
-  console.log(course);
-  let course_id = course.id;
+
+  const [wordlist, setWordlist] = useState([]);
+  const loadWordList = () => {
+    WordApi.getWordByTopicId(params.topicId)
+      .then((response) => {
+        setWordlist(response.data);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(() => {
+    loadWordList();
+  }, []);
+
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const [wordEng, setWordEng] = useState("");
+  const [wordPronounce, setWordPronounce] = useState("");
+  const [wordViet, setWordViet] = useState("");
   var word = wordlist[currentIndex];
 
   const [inputValue, setInputValue] = useState("");
@@ -32,6 +43,9 @@ const PracticeCommon = (props) => {
   const handleNextWord = () => {
     if (inputValue == word.eng.toLowerCase()) {
       setCurrentIndex(currentIndex + 1);
+      setWordEng(wordlist[currentIndex].eng);
+      setWordPronounce(wordlist[currentIndex].pronounce);
+      setWordViet(wordlist[currentIndex].viet);
       setInputValue("");
       setIncorrect(false);
     } else {
@@ -141,7 +155,7 @@ const PracticeCommon = (props) => {
                 </li> */}
               <li className="word-info-item">
                 <label>TIẾNG VIỆT</label>
-                <div className="info english">{word.viet}</div>
+                <div className="info english">{wordViet}</div>
               </li>
               <li className="word-info-item">
                 <label>PHÁT ÂM</label>
@@ -181,7 +195,7 @@ const PracticeCommon = (props) => {
             {currentIndex == wordlist.length - 1 && (
               <Link
                 className="next-btn"
-                to={`/course/${course.courseId}/topic/${topic.topicId}/complete`}
+                to={`/${params.accountId}/course/${course.courseId}/topic/${params.topicId}/complete`}
                 onClick={handleNextWord}
               >
                 <FontAwesomeIcon icon={faAngleRight} />
