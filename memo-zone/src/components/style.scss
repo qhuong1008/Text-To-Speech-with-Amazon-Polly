@@ -57,7 +57,8 @@
 }
 .user-info {
   position: absolute;
-  right: 170px;
+  right: 90px;
+  top: 10px;
   color: #344648;
 }
 
@@ -78,6 +79,12 @@
   left: 0;
   z-index: 1;
   padding: 30px 0 !important;
+}
+
+.header-wrapper .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .course-container {
   background-color: #fef5ec;
@@ -119,6 +126,15 @@
 }
 .dropdown-menu {
   position: absolute;
-  left: -160px !important;
-  background-color: red;
+  left: -124px !important;
+  background-color: white;
+}
+.dropdown-btn {
+  margin-right: 30px;
+}
+.dropdown-btn button {
+  background-color: #344648;
+  &:hover {
+    background-color: #3f4a4b;
+  }
 }

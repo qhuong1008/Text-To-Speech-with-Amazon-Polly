@@ -4,6 +4,7 @@ import data from "../../data";
 import AppHeader from "../../components/AppHeader";
 import { useState, useEffect } from "react";
 import { TopicApi, CourseApi, WordApi } from "../../api/index";
+import Loading from "../../pages/Loading/Loading";
 import { Link, useParams } from "react-router-dom";
 import AWS from "aws-sdk";
 import $ from "jquery";
@@ -16,42 +17,39 @@ const PracticeCommon = (props) => {
   let course = data.find((courseItem) => {
     if (courseItem.courseId == params.courseId) return courseItem;
   });
-
+  const [isLoading, setIsLoading] = useState(true);
   const [wordlist, setWordlist] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  var word = wordlist[currentIndex];
   const loadWordList = () => {
+    setIsLoading(true);
     WordApi.getWordByTopicId(params.topicId)
       .then((response) => {
         setWordlist(response.data);
       })
+      .then(() => setIsLoading(false))
       .catch((error) => console.log(error));
   };
-
-  useEffect(() => {
-    loadWordList();
-  }, []);
-
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   const [wordEng, setWordEng] = useState("");
   const [wordPronounce, setWordPronounce] = useState("");
   const [wordViet, setWordViet] = useState("");
-  var word = wordlist[currentIndex];
 
   const [inputValue, setInputValue] = useState("");
   const [incorrect, setIncorrect] = useState(false);
 
   const handleNextWord = () => {
-    if (inputValue == word.eng.toLowerCase()) {
+    if (inputValue == wordlist[currentIndex].eng.toLowerCase()) {
       setCurrentIndex(currentIndex + 1);
-      setWordEng(wordlist[currentIndex].eng);
-      setWordPronounce(wordlist[currentIndex].pronounce);
-      setWordViet(wordlist[currentIndex].viet);
       setInputValue("");
       setIncorrect(false);
     } else {
       setIncorrect(true);
     }
   };
+  useEffect(() => {
+    loadWordList();
+  }, []);
 
   var AWS = require("aws-sdk");
   var $ = require("jquery");
@@ -142,6 +140,9 @@ const PracticeCommon = (props) => {
     var sourceLanguageCode = "En-UK";
     doSynthesize(text, sourceLanguageCode);
   };
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <>
       <AppHeader accountId={params.accountId} />
@@ -155,7 +156,9 @@ const PracticeCommon = (props) => {
                 </li> */}
               <li className="word-info-item">
                 <label>TIẾNG VIỆT</label>
-                <div className="info english">{wordViet}</div>
+                <div className="info english">
+                  {wordlist[currentIndex].viet}
+                </div>
               </li>
               <li className="word-info-item">
                 <label>PHÁT ÂM</label>
@@ -172,8 +175,7 @@ const PracticeCommon = (props) => {
                 <label>TIẾNG ANH</label>
                 {incorrect && (
                   <div className="word-incorrect">
-                    {" "}
-                    {word.eng.toLowerCase()}
+                    {wordlist[currentIndex].eng}
                   </div>
                 )}
                 <input

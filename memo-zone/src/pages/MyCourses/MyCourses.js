@@ -6,25 +6,30 @@ import { Link, useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import NewCourseModal from "../NewCourseModal/NewCourseModal";
 import { CourseApi } from "../../api/index";
+import Loading from "../../pages/Loading/Loading";
 
 const MyCourses = () => {
   const params = useParams();
 
   const [modalShow, setModalShow] = React.useState(false);
   const [courses, setCourses] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const loadAllCourses = () => {
     CourseApi.getCourseByAccountId(params.accountId)
       .then((response) => {
         setCourses(response.data);
       })
+      .then(setIsLoading(false))
       .catch((error) => {});
   };
 
   useEffect(() => {
     loadAllCourses();
   }, []);
-
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div class="home-container">
       <AppHeader accountId={params.accountId} />

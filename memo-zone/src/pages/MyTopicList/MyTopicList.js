@@ -6,30 +6,34 @@ import { useState, useEffect } from "react";
 import { TopicApi, CourseApi } from "../../api/index";
 import NewTopicModal from "../NewTopicModal/NewTopicModal";
 import style from "./style.scss";
+import Loading from "../../pages/Loading/Loading";
 
 const MyTopicList = (props) => {
   const params = useParams();
-  console.log(params);
+  const [isLoading, setIsLoading] = useState(true);
   const [course, setCourse] = useState({});
   const [courseName, setCourseName] = useState("");
 
   const loadCurrentCourse = () => {
+    setIsLoading(true);
     CourseApi.getCourseById(params.courseId)
       .then((response) => {
         setCourse(response.data);
-
         setCourseName(course[0].courseName);
       })
+      .then(setIsLoading(false))
       .catch((error) => console.log(error));
   };
 
   const [topics, setTopics] = useState([]);
 
   const loadAllTopics = () => {
+    setIsLoading(true);
     TopicApi.getTopicByCourseId(params.courseId)
       .then((response) => {
         setTopics(response.data);
       })
+      .then(setIsLoading(false))
       .catch((error) => console.log(error));
   };
 
@@ -38,6 +42,9 @@ const MyTopicList = (props) => {
     loadAllTopics();
   }, []);
   const [modalShow, setModalShow] = useState(false);
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div>
       <div className="topiclist-container">

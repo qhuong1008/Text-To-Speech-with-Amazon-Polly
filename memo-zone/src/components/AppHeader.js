@@ -27,16 +27,18 @@ const AppHeader = (props) => {
             </Nav>
           </Nav>
         </Container>
-        <Dropdown>
+        <Dropdown className="dropdown-btn">
           <Dropdown.Toggle
             variant="success"
             id="dropdown-basic"
           ></Dropdown.Toggle>
 
           <Dropdown.Menu className="dropdown-menu">
-            <Dropdown.Item href="/profile">Hồ sơ</Dropdown.Item>
-            <Dropdown.Item href="/login">Đăng xuất</Dropdown.Item>
-            <Dropdown.Item href="/settings">Cài đặt</Dropdown.Item>
+            <Dropdown.Item href={`/${props.accountId}/profile`}>
+              Hồ sơ
+            </Dropdown.Item>
+            <Dropdown.Item href="/">Đăng xuất</Dropdown.Item>
+            {/* <Dropdown.Item href="/settings">Cài đặt</Dropdown.Item> */}
           </Dropdown.Menu>
         </Dropdown>
       </Navbar>

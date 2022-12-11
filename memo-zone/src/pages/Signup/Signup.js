@@ -1,21 +1,50 @@
 import Scss_Signup from "./Scss_Signup.scss";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import userdata from "../../userdata";
-
+import { AccountApi } from "../../api/index";
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [retypePassword, setRetypePassword] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const AddNewUser = (username, password, name, email) => {
-    let user = new Object();
-    user.username = username;
-    user.password = password;
-    user.name = name;
-    user.email = email;
-    userdata.push(user);
-    console.log(userdata);
+  // const AddNewUser = (username, password, name, email) => {
+  //   let user = new Object();
+  //   user.username = username;
+  //   user.password = password;
+  //   user.name = name;
+  //   user.email = email;
+  //   userdata.push(user);
+  //   console.log(userdata);
+  // };
+
+  let account = {
+    accountId: "",
+    username: "",
+    password: "",
+    name: "",
+    email: "",
+  };
+  const [accountlist, setAccountlist] = useState([]);
+
+  const loadAllAccounts = () => {
+    AccountApi.getAccounts()
+      .then((response) => {
+        setAccountlist(response.data);
+      })
+      .catch((error) => {});
+  };
+  const accountAvailableCheck = (username) => {
+    let check = false;
+    accountlist.forEach((accountItem) => {
+      if (accountItem.username == username) check = true;
+    });
+    return check;
+  };
+  const addNewAccount = () => {
+    AccountApi.addAccount(account)
+      .then((response) => {})
+      .catch((error) => console.log(error));
   };
   const handleSignup = () => {
     if (
@@ -30,12 +59,23 @@ const Login = () => {
       if (password != retypePassword)
         alert("Password nhập lại không trùng nhau!");
       else {
-        AddNewUser(username, password, name, email);
-        alert("Signup successfully!");
-        window.location.href = "http://localhost:3000/signup";
+        if (accountAvailableCheck(username) == true) {
+          alert("Username đã tồn tại! Vui lòng nhập username khác!");
+        } else {
+          account.username = username;
+          account.password = password;
+          account.name = name;
+          account.email = email;
+          addNewAccount();
+          alert("Signup successfully!");
+          window.location.href = "http://localhost:3000/";
+        }
       }
     }
   };
+  useEffect(() => {
+    loadAllAccounts();
+  }, []);
   return (
     <div class="body">
       <div className="center">
@@ -88,6 +128,9 @@ const Login = () => {
           </div>
           <div className="signup-btn" onClick={handleSignup}>
             Signup
+          </div>
+          <div className="signup_link">
+            Already a member? <a href="/">Sign in</a>
           </div>
         </form>
       </div>

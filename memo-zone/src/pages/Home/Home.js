@@ -9,11 +9,13 @@ import { useState, useEffect } from "react";
 const Home = () => {
   const params = useParams();
   const [courses, setCourses] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const loadAllCourses = () => {
-    CourseApi.getCourseByAccountId(params.accountId)
+    CourseApi.getCourses()
       .then((response) => {
         setCourses(response.data);
+        setLoading(false);
       })
       .catch((error) => {});
   };
@@ -25,21 +27,24 @@ const Home = () => {
   return (
     <div class="home-container">
       <AppHeader accountId={params.accountId} />
-      <div className="mycourses-container">
-        <h1>Tất cả các khoá học</h1>
-        <div className="course-list">
-          {courses.map((courseItem) => {
-            return (
-              <Course
-                key={courseItem.courseId}
-                accountId={params.accountId}
-                courseId={courseItem.courseId}
-                courseName={courseItem.courseName}
-              />
-            );
-          })}
+      {loading == false && (
+        <div className="mycourses-container">
+          <h1>Tất cả các khoá học</h1>
+          <div className="course-list">
+            {courses.map((courseItem) => {
+              return (
+                <Course
+                  key={courseItem.courseId}
+                  accountId={params.accountId}
+                  courseId={courseItem.courseId}
+                  courseName={courseItem.courseName}
+                />
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
+      {loading && <>loading..</>}
     </div>
   );
 };

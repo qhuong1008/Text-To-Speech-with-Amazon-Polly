@@ -4,6 +4,7 @@ import data from "../../data";
 import AppHeader from "../../components/AppHeader";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import Loading from "../../pages/Loading/Loading";
 import AWS from "aws-sdk";
 import $ from "jquery";
 import React from "react";
@@ -13,6 +14,7 @@ import { TopicApi, CourseApi, WordApi } from "../../api/index";
 
 const Learn = (props) => {
   const params = useParams();
+  const [isLoading, setIsLoading] = useState(true);
 
   const [wordlist, setWordlist] = useState([]);
   const loadWordList = () => {
@@ -20,6 +22,7 @@ const Learn = (props) => {
       .then((response) => {
         setWordlist(response.data);
       })
+      .then(() => setIsLoading(false))
       .catch((error) => console.log(error));
   };
 
@@ -121,6 +124,9 @@ const Learn = (props) => {
     var sourceLanguageCode = "En-UK";
     doSynthesize(text, sourceLanguageCode);
   };
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <>
       <AppHeader accountId={params.accountId} />
@@ -130,11 +136,13 @@ const Learn = (props) => {
             <ul className="word-info">
               <li className="word-info-item">
                 <label>TIẾNG ANH</label>
-                <div className="info english">{wordEng}</div>
+                <div className="info english">{wordlist[currentIndex].eng}</div>
               </li>
               <li className="word-info-item">
                 <label>TIẾNG VIỆT</label>
-                <div className="info english">{wordViet}</div>
+                <div className="info english">
+                  {wordlist[currentIndex].viet}
+                </div>
               </li>
               <li className="word-info-item">
                 <label>PHÁT ÂM</label>
@@ -150,13 +158,13 @@ const Learn = (props) => {
             </ul>
           </div>
           <div className="wordItem">
-            {currentIndex != wordlist.length && (
+            {currentIndex != wordlist.length - 1 && (
               <div className="next-btn" onClick={handleNextWord}>
                 <FontAwesomeIcon className="icon" icon={faAngleRight} />
                 Next
               </div>
             )}
-            {currentIndex == wordlist.length && (
+            {currentIndex == wordlist.length - 1 && (
               <Link
                 className="next-btn"
                 to={`/${params.accountId}/course/${params.courseId}/topic/${params.topicId}/complete`}
