@@ -16,6 +16,9 @@ const addWord = async (word) => {
   return await axios.post("http://localhost:8090/api/words", word);
 };
 
+const addWordList = async (wordlist) => {
+  return await axios.post("http://localhost:8090/api/wordlist", wordlist);
+};
 const updateWordById = async (word, wordId) => {
   return await axios.post(`http://localhost:8090/api/words/${wordId}`, word);
 };
@@ -30,4 +33,5 @@ export {
   updateWordById,
   deleteWordById,
   getWordByTopicId,
+  addWordList,
 };

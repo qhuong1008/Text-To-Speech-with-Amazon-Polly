@@ -11,7 +11,6 @@ import data from "../../data";
 const TopicList = (props) => {
   const params = useParams();
   const [isLoading, setIsLoading] = useState(true);
-  const [isLoading2, setIsLoading2] = useState(true);
 
   const [course, setCourse] = useState([]);
 
@@ -28,28 +27,25 @@ const TopicList = (props) => {
   const [topics, setTopics] = useState([]);
 
   const loadAllTopics = () => {
-    setIsLoading2(true);
+    setIsLoading(true);
     TopicApi.getTopicByCourseId(params.courseId)
       .then((response) => {
         setTopics(response.data);
       })
-      .then(setIsLoading2(false))
+      .then(setIsLoading(false))
 
       .catch((error) => console.log(error));
   };
   // setCourseName(course[0].courseName);
   useEffect(() => {
     loadCurrentCourse();
-  }, []);
-  useEffect(() => {
     loadAllTopics();
-  });
+  }, []);
+
   if (isLoading) {
     return <Loading />;
   }
-  // if (isLoading2) {
-  //   return <Loading />;
-  // }
+
   return (
     <div>
       <div className="topiclist-container">

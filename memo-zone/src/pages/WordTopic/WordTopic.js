@@ -6,55 +6,61 @@ import GlobalStyle from "../GlobalStyle.scss";
 import Table from "react-bootstrap/Table";
 import { useEffect, useState } from "react";
 import { TopicApi, CourseApi, WordApi } from "../../api/index";
+import Loading from "../../pages/Loading/Loading";
 
 const WordTopic = () => {
   const params = useParams();
-  // let course = data.find((courseItem) => {
-  //   if (courseItem.courseId == params.courseId) return courseItem;
-  // });
-  // let course_name = course.courseName;
-  // let topic = course.courseTopics.find((topicItem) => {
-  //   if (topicItem.topicId == params.topicId) return topicItem;
-  // });
-  // let topic_name = topic.topicName;
-  // let wordlist = topic.wordlist;
+  const [isLoading, setIsLoading] = useState(true);
   const [course, setCourse] = useState({});
   const [courseName, setCourseName] = useState("");
 
   const loadCurrentCourse = () => {
+    setIsLoading(true);
     CourseApi.getCourseById(params.courseId)
       .then((response) => {
         setCourse(response.data);
         setCourseName(course[0].courseName);
       })
+      .then(setIsLoading(false))
       .catch((error) => console.log(error));
   };
 
   const [topic, setTopic] = useState({});
   const [topicName, setTopicName] = useState("");
   const loadCurrentTopic = () => {
+    setIsLoading(true);
     TopicApi.getTopicById(params.topicId)
       .then((response) => {
         setTopic(response.data);
-        setTopicName(topic.topicName);
+        setTopicName(topic[0].topicName);
       })
+      .then(setIsLoading(false))
       .catch((error) => console.log(error));
   };
   const [wordlist, setWordlist] = useState([]);
   const loadWordList = () => {
+    setIsLoading(true);
     WordApi.getWordByTopicId(params.topicId)
       .then((response) => {
         setWordlist(response.data);
       })
+      .then(setIsLoading(false))
       .catch((error) => console.log(error));
   };
 
   useEffect(() => {
     loadCurrentCourse();
+  }, []);
+  useEffect(() => {
     loadCurrentTopic();
+  });
+  useEffect(() => {
     loadWordList();
   }, []);
 
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <>
       <AppHeader accountId={params.accountId} />
