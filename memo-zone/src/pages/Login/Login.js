@@ -67,7 +67,7 @@ const Login = () => {
             <span></span>
             <label>Password</label>
           </div>
-          <div className="pass">Forgot Password?</div>
+          {/* <div className="pass">Forgot Password?</div> */}
           <div className="login-btn" onClick={handleLogin}>
             Login
           </div>
