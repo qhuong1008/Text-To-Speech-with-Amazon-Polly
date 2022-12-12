@@ -103,7 +103,7 @@
   border-radius: 0px 0px 10px 10px;
   cursor: pointer;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 600;
   color: black;
   &:hover {
     background-color: #7d8e95;
@@ -138,8 +138,9 @@
 .dropdown-btn button {
   background-color: #3f4a4b;
   color: #fbe0c3;
-  &:hover {
-    background-color: #7d8e95 ;
+  &:hover, &:focus {
+    color: #fbe0c3;
+  background-color: #7d8e95;
   }
 }
 .dropdown-item {
