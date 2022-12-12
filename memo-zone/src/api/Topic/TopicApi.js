@@ -1,27 +1,27 @@
-import axios from "axios";
+import { axiosInstance } from "../types/axios";
 
 const getTopics = async () => {
-  return await axios.get("http://localhost:8090/api/topics");
+  return await axiosInstance.get("/api/topics");
 };
 
 const getTopicById = async (topicId) => {
-  return await axios.get(`http://localhost:8090/api/topics/${topicId}`);
+  return await axiosInstance.get(`/api/topics/${topicId}`);
 };
 
 const getTopicByCourseId = async (courseId) => {
-  return await axios.get(`http://localhost:8090/api/topics/course/${courseId}`);
+  return await axiosInstance.get(`/api/topics/course/${courseId}`);
 };
 
 const addTopic = async (topic) => {
-  return await axios.post("http://localhost:8090/api/topics", topic);
+  return await axiosInstance.post("/api/topics", topic);
 };
 
 const updateTopicById = async (topic, topicId) => {
-  return await axios.post(`http://localhost:8090/api/topics/${topicId}`, topic);
+  return await axiosInstance.post(`/api/topics/${topicId}`, topic);
 };
 
 const deleteTopicById = async (topicId) => {
-  return await axios.delete(`http://localhost:8090/api/topics/${topicId}`);
+  return await axiosInstance.delete(`/api/topics/${topicId}`);
 };
 export {
   getTopics,
