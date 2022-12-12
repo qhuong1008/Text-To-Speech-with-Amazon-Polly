@@ -106,7 +106,8 @@
   font-weight: bold;
   color: black;
   &:hover {
-    background-color: #f6ab86;
+    background-color: #7d8e95;
+    color: #fbe0c3;
   }
 }
 .topicItem-container {
@@ -122,7 +123,8 @@
   font-weight: 700;
   border-radius: 10px;
   &:hover {
-    background-color: #fdae87;
+    color: #fbe0c3;
+    background-color: #7d8e95;
   }
 }
 .dropdown-menu {
@@ -154,6 +156,6 @@
   border: 0;
 }
 .dropdown-item:hover, .dropdown-item:focus {
-  color: #7d8e95;
-  background-color: #fbe0c3;
+  color: #fbe0c3;
+  background-color: #7d8e95;
 }
