@@ -1,30 +1,30 @@
-import axios from "axios";
+import { axiosInstance } from "../types/axios";
 
 const getWords = async () => {
-  return await axios.get("http://localhost:8090/api/words");
+  return await axiosInstance.get("/api/words");
 };
 
 const getWordById = async (wordId) => {
-  return await axios.get(`http://localhost:8090/api/words/${wordId}`);
+  return await axiosInstance.get(`/api/words/${wordId}`);
 };
 
 const getWordByTopicId = async (topicId) => {
-  return await axios.get(`http://localhost:8090/api/words/topic/${topicId}`);
+  return await axiosInstance.get(`/api/words/topic/${topicId}`);
 };
 
 const addWord = async (word) => {
-  return await axios.post("http://localhost:8090/api/words", word);
+  return await axiosInstance.post("/api/words", word);
 };
 
 const addWordList = async (wordlist) => {
-  return await axios.post("http://localhost:8090/api/wordlist", wordlist);
+  return await axiosInstance.post("/api/wordlist", wordlist);
 };
 const updateWordById = async (word, wordId) => {
-  return await axios.post(`http://localhost:8090/api/words/${wordId}`, word);
+  return await axiosInstance.post(`/api/words/${wordId}`, word);
 };
 
 const deleteWordById = async (wordId) => {
-  return await axios.delete(`http://localhost:8090/api/words/${wordId}`);
+  return await axiosInstance.delete(`/api/words/${wordId}`);
 };
 export {
   getWords,

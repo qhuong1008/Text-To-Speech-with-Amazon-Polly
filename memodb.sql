@@ -44,10 +44,10 @@ insert into Account values ('huongcute','123456',N'Phạm Quỳnh Hương','huon
 insert into Account values ('nguyenlien','123456',N'Nguyễn Thị Bích Liên','lien@gmail.com')
 insert into Account values ('quanghuy','123456',N'Phạm Quang Huy','huy@gmail.com')
 
-insert into Course values('toeic 200+')
-insert into Course values('toeic 300+')
-insert into Course values('toeic 400+')
-insert into Course values('toeic 500+')
+insert into Course values('toeic 200+',1)
+insert into Course values('toeic 300+',1)
+insert into Course values('toeic 400+',2)
+insert into Course values('toeic 500+',2)
 
 go
 insert into Topic values('Marketing',1)

@@ -1,26 +1,23 @@
-import axios from "axios";
+import { axiosInstance } from "../types/axios";
 
 const getAccounts = async () => {
-  return await axios.get("http://localhost:8090/api/accounts");
+  return await axiosInstance.get("/api/accounts");
 };
 
 const getAccountById = async (accountId) => {
-  return await axios.get(`http://localhost:8090/api/accounts/${accountId}`);
+  return await axiosInstance.get(`/api/accounts/${accountId}`);
 };
 
 const addAccount = async (account) => {
-  return await axios.post("http://localhost:8090/api/accounts", account);
+  return await axiosInstance.post("/api/accounts", account);
 };
 
 const updateAccountById = async (account, accountId) => {
-  return await axios.post(
-    `http://localhost:8090/api/accounts/${accountId}`,
-    account
-  );
+  return await axiosInstance.post(`/api/accounts/${accountId}`, account);
 };
 
 const deleteAccountById = async (accountId) => {
-  return await axios.delete(`http://localhost:8090/api/accounts/${accountId}`);
+  return await axiosInstance.delete(`/api/accounts/${accountId}`);
 };
 export {
   getAccounts,
