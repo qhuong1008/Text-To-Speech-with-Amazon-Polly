@@ -5,11 +5,12 @@ import { useState, useEffect } from "react";
 import { TopicApi, CourseApi, WordApi } from "../../api/index";
 import Loading from "../../pages/Loading/Loading";
 import { Link, useParams } from "react-router-dom";
-import AWS from "aws-sdk";
+import AWS from "../../AWSPolly";
 import $ from "jquery";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
+// import AWS from "../../AWSPolly";
 
 const PracticeCommon = (props) => {
   const params = useParams();
@@ -28,10 +29,6 @@ const PracticeCommon = (props) => {
       .catch((error) => console.log(error));
   };
 
-  const [wordEng, setWordEng] = useState("");
-  const [wordPronounce, setWordPronounce] = useState("");
-  const [wordViet, setWordViet] = useState("");
-
   const [inputValue, setInputValue] = useState("");
   const [incorrect, setIncorrect] = useState(false);
 
@@ -48,25 +45,11 @@ const PracticeCommon = (props) => {
     loadWordList();
   }, []);
 
-  var AWS = require("aws-sdk");
-  var $ = require("jquery");
-  AWS.config.region = "us-east-1"; // Region
-  AWS.config.credentials = new AWS.Credentials(
-    "ASIASCU3UYOHWDIR67P7",
-    "lPDZk8Z8dyidQI1ZMeq1lqcX75kuMWacsAUcB84A",
-    "FwoGZXIvYXdzEOP//////////wEaDKFEqnliHQ2VAru58CLPARBXiZFcNsO1+V2I0oU4T3u5BfFebiQbgnXpfyD5n/HMEKPhqOXllpOFRys99cBtHU9hp2rJ2m0C7zEnG4s9zuaT8T8xI3BxTRxDZsReVb78aBpWME+t9AGLkn+FDq7QUDv8tdQMx5FuFrH4EIgqkbNDjRm9XgA3ao3HI1xnsmgnhhUusZ+KMwifUxnMxTZnKDr3UjhOwkkwXBOF6B0A9uQW3yX7cp126AWnKs8VVEKs/kGOvcyVFWlpkpRYAtWOuTp7y11SNXHfMZ3RMH+quCjcgbecBjItCX1R6dIfenBLzvk1nGNlOx0tm7dSegaj/M6jNIEsfE5sZ/EZvrJrkHp4KWfw"
-  );
   var polly = new AWS.Polly();
   function doSynthesize(text, languageCode) {
     var voiceId;
     var textType = "text";
-    // // Get the checkbox
-    // var checkBox = document.getElementById("toggle");
 
-    // // If the checkbox is checked, display the output text
-    // if (checkBox.checked == true) {
-    //   textType = "ssml";
-    // }
     switch (languageCode) {
       case "En-US":
         voiceId = "Matthew";
@@ -112,7 +95,7 @@ const PracticeCommon = (props) => {
   }
   const doSynthesizeInput = () => {
     // var text = document.getElementById("input").value.trim();
-    var text = word.eng;
+    var text = wordlist[currentIndex].eng;
     if (!text) {
       return;
     }
@@ -120,8 +103,10 @@ const PracticeCommon = (props) => {
     doSynthesize(text, sourceLanguageCode);
   };
   const doSynthesizeInput_US = () => {
+    console.log("fduohfsodh");
+    console.log(wordlist[currentIndex].eng);
     // var text = document.getElementById("input").value.trim();
-    var text = word.eng;
+    var text = wordlist[currentIndex].eng;
     if (!text) {
       return;
     }
@@ -130,7 +115,7 @@ const PracticeCommon = (props) => {
   };
   const doSynthesizeInput_UK = () => {
     // var text = document.getElementById("input").value.trim();
-    var text = word.eng;
+    var text = wordlist[currentIndex].eng;
     if (!text) {
       return;
     }

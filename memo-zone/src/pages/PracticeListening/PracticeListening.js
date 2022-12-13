@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { TopicApi, CourseApi, WordApi } from "../../api/index";
 import Loading from "../../pages/Loading/Loading";
 import { Link, useParams } from "react-router-dom";
-import AWS from "aws-sdk";
+import AWS from "../../AWSPolly";
 import $ from "jquery";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,7 +13,6 @@ import { faAngleRight, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
 const PracticeListening = (props) => {
   const params = useParams();
-
   const [isLoading, setIsLoading] = useState(true);
   const [wordlist, setWordlist] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -28,9 +27,6 @@ const PracticeListening = (props) => {
       .catch((error) => console.log(error));
   };
 
-  const [wordEng, setWordEng] = useState("");
-  const [wordPronounce, setWordPronounce] = useState("");
-  const [wordViet, setWordViet] = useState("");
 
   const [inputValue, setInputValue] = useState("");
   const [incorrect, setIncorrect] = useState(false);
@@ -48,25 +44,11 @@ const PracticeListening = (props) => {
     loadWordList();
   }, []);
 
-  var AWS = require("aws-sdk");
-  var $ = require("jquery");
-  AWS.config.region = "us-east-1"; // Region
-  AWS.config.credentials = new AWS.Credentials(
-    "ASIASCU3UYOHWDIR67P7",
-    "lPDZk8Z8dyidQI1ZMeq1lqcX75kuMWacsAUcB84A",
-    "FwoGZXIvYXdzEOP//////////wEaDKFEqnliHQ2VAru58CLPARBXiZFcNsO1+V2I0oU4T3u5BfFebiQbgnXpfyD5n/HMEKPhqOXllpOFRys99cBtHU9hp2rJ2m0C7zEnG4s9zuaT8T8xI3BxTRxDZsReVb78aBpWME+t9AGLkn+FDq7QUDv8tdQMx5FuFrH4EIgqkbNDjRm9XgA3ao3HI1xnsmgnhhUusZ+KMwifUxnMxTZnKDr3UjhOwkkwXBOF6B0A9uQW3yX7cp126AWnKs8VVEKs/kGOvcyVFWlpkpRYAtWOuTp7y11SNXHfMZ3RMH+quCjcgbecBjItCX1R6dIfenBLzvk1nGNlOx0tm7dSegaj/M6jNIEsfE5sZ/EZvrJrkHp4KWfw"
-  );
   var polly = new AWS.Polly();
   function doSynthesize(text, languageCode) {
     var voiceId;
     var textType = "text";
-    // // Get the checkbox
-    // var checkBox = document.getElementById("toggle");
 
-    // // If the checkbox is checked, display the output text
-    // if (checkBox.checked == true) {
-    //   textType = "ssml";
-    // }
     switch (languageCode) {
       case "En-US":
         voiceId = "Matthew";
@@ -112,7 +94,7 @@ const PracticeListening = (props) => {
   }
   const doSynthesizeInput = () => {
     // var text = document.getElementById("input").value.trim();
-    var text = word.eng;
+    var text = wordlist[currentIndex].eng;
     if (!text) {
       return;
     }
@@ -120,8 +102,10 @@ const PracticeListening = (props) => {
     doSynthesize(text, sourceLanguageCode);
   };
   const doSynthesizeInput_US = () => {
+    console.log("fduohfsodh");
+    console.log(wordlist[currentIndex].eng);
     // var text = document.getElementById("input").value.trim();
-    var text = word.eng;
+    var text = wordlist[currentIndex].eng;
     if (!text) {
       return;
     }
@@ -130,13 +114,16 @@ const PracticeListening = (props) => {
   };
   const doSynthesizeInput_UK = () => {
     // var text = document.getElementById("input").value.trim();
-    var text = word.eng;
+    var text = wordlist[currentIndex].eng;
     if (!text) {
       return;
     }
     var sourceLanguageCode = "En-UK";
     doSynthesize(text, sourceLanguageCode);
   };
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <>
       <AppHeader accountId={params.accountId} />
@@ -150,7 +137,9 @@ const PracticeListening = (props) => {
                 </li> */}
               {/* <li className="word-info-item">
                 <label>TIẾNG VIỆT</label>
-                <div className="info english">{word.viet}</div>
+                <div className="info english">
+                  {wordlist[currentIndex].viet}
+                </div>
               </li> */}
               <li className="word-info-item">
                 <label>PHÁT ÂM</label>
@@ -167,8 +156,7 @@ const PracticeListening = (props) => {
                 <label>TIẾNG ANH</label>
                 {incorrect && (
                   <div className="word-incorrect">
-                    {" "}
-                    {word.eng.toLowerCase()}
+                    {wordlist[currentIndex].eng}
                   </div>
                 )}
                 <input
@@ -188,7 +176,8 @@ const PracticeListening = (props) => {
             {currentIndex == wordlist.length - 1 && (
               <Link
                 className="next-btn"
-                to={`/${params.accountId}/course/${params.courseId}/topic/${params.topicId}/complete`}
+                to={`/${params.accountId}/course/${course.courseId}/topic/${params.topicId}/complete`}
+
                 onClick={handleNextWord}
               >
                 <FontAwesomeIcon icon={faAngleRight} />
@@ -210,4 +199,5 @@ const PracticeListening = (props) => {
     </>
   );
 };
+
 export default PracticeListening;

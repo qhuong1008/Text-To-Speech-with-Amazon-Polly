@@ -4,6 +4,7 @@ if (process.env.NODE_ENV === "development") {
   backendUrl = "http://localhost:8090";
 } else {
   //Production env
+
   backendUrl = "http://ec2-54-224-108-224.compute-1.amazonaws.com:8090";
 }
 
