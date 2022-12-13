@@ -176,7 +176,7 @@ const PracticeListening = (props) => {
             {currentIndex == wordlist.length - 1 && (
               <Link
                 className="next-btn"
-                to={`/${params.accountId}/course/${course.courseId}/topic/${params.topicId}/complete`}
+                to={`/${params.accountId}/course/${params.courseId}/topic/${params.topicId}/complete`}
 
                 onClick={handleNextWord}
               >
