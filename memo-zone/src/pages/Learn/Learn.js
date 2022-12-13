@@ -5,12 +5,13 @@ import AppHeader from "../../components/AppHeader";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import Loading from "../../pages/Loading/Loading";
-import AWS from "aws-sdk";
+// import AWS from "aws-sdk";
 import $ from "jquery";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 import { TopicApi, CourseApi, WordApi } from "../../api/index";
+import AWS from "../../AWSPolly";
 
 const Learn = (props) => {
   const params = useParams();
@@ -42,14 +43,6 @@ const Learn = (props) => {
     setWordViet(wordlist[currentIndex].viet);
   };
 
-  var AWS = require("aws-sdk");
-  var $ = require("jquery");
-  AWS.config.region = "us-east-1"; // Region
-  AWS.config.credentials = new AWS.Credentials(
-    "ASIASCU3UYOHWDIR67P7",
-    "lPDZk8Z8dyidQI1ZMeq1lqcX75kuMWacsAUcB84A",
-    "FwoGZXIvYXdzEOP//////////wEaDKFEqnliHQ2VAru58CLPARBXiZFcNsO1+V2I0oU4T3u5BfFebiQbgnXpfyD5n/HMEKPhqOXllpOFRys99cBtHU9hp2rJ2m0C7zEnG4s9zuaT8T8xI3BxTRxDZsReVb78aBpWME+t9AGLkn+FDq7QUDv8tdQMx5FuFrH4EIgqkbNDjRm9XgA3ao3HI1xnsmgnhhUusZ+KMwifUxnMxTZnKDr3UjhOwkkwXBOF6B0A9uQW3yX7cp126AWnKs8VVEKs/kGOvcyVFWlpkpRYAtWOuTp7y11SNXHfMZ3RMH+quCjcgbecBjItCX1R6dIfenBLzvk1nGNlOx0tm7dSegaj/M6jNIEsfE5sZ/EZvrJrkHp4KWfw"
-  );
   var polly = new AWS.Polly();
   function doSynthesize(text, languageCode) {
     var voiceId;
@@ -99,7 +92,7 @@ const Learn = (props) => {
   }
   const doSynthesizeInput = () => {
     // var text = document.getElementById("input").value.trim();
-    var text = wordEng;
+    var text = wordlist[currentIndex].eng;
     if (!text) {
       return;
     }
@@ -108,7 +101,7 @@ const Learn = (props) => {
   };
   const doSynthesizeInput_US = () => {
     // var text = document.getElementById("input").value.trim();
-    var text = wordEng;
+    var text = wordlist[currentIndex].eng;
     if (!text) {
       return;
     }
@@ -116,8 +109,9 @@ const Learn = (props) => {
     doSynthesize(text, sourceLanguageCode);
   };
   const doSynthesizeInput_UK = () => {
+    console.log(wordlist[currentIndex].eng);
     // var text = document.getElementById("input").value.trim();
-    var text = wordEng;
+    var text = wordlist[currentIndex].eng;
     if (!text) {
       return;
     }
