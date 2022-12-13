@@ -2,9 +2,9 @@ var AWS = require("aws-sdk");
 var $ = require("jquery");
 AWS.config.region = "us-east-1"; // Region
 AWS.config.credentials = new AWS.Credentials(
-  "ASIAWLTLA44KT5Z3KPEK",
-  "kXV0KBMvSrAUihbvO0wABeJfQ0J+zn6hzwgcI35B",
-  "FwoGZXIvYXdzEJ3//////////wEaDJrPb85apYsTq+Q4HSLPASpcvoJ78o7CgmuAxJPXZK2XfD2rFVrBCPiB+iZMR5UxRbAQoJojY9GMILE13gqv7FskxkMGUXeaStzjJ/fE18ZcAysrptfLtxhPpeOzN68qvm8z7cBFrOv7EWhckEiwlHuu0Io5dezK/UDSIyJtLaVnnHUiI9uiTUVzbqx58qfRkaZkpSez/C0Ngwqk4hqRfAJB2xU9dhgBY9guf5//1sMKzq7FF5pjEJ0gnHogCa0qEdpIFxgUo2xWuUn1AT9uDvb72Bl8FgKUdrtuizcHXyiZ49+cBjItXKuWnsPVGbFq8ONGnQDPX5WBF2zM+oygo/CYQ/sMQgsyiwdC+uf4YzJWRCRQ"
+  "ASIAWLTLA44K3BABOWLH",
+  "7UXKlv+ur8FNz17dDMgcU69OqzkVaa8BJLTlLX8p",
+  "FwoGZXIvYXdzEKL//////////wEaDE5Q7S8I3dUppRUKYiLPAVYDff3xnpm5WGgulqsbJtOxHYt/fQj7w+eEQ4DFboa2k8gJgJjMGl+yGR58gnhu3Lmt1KSXP4AklR9pIgdNRNwKzTnMkhDX0DruQOwdor3TTXWnq/DyubmCzm/ADmEV3TUibt2wq3tkYyWY5BqmxqhIUff9AbBuCQS04oDHk8EmgC+LcK6ov6S19FhSYMBXUDXkaIdWozXaco40Xtl4k2cDIB9JA4sMiOwXM4z/0cMsfMv2bBUMDYOtRyUpsIpkYZk+9+/YGyyqkT748e1EuCit8OCcBjIt+yS+tuaDkqvhpmQh2Gx29K7KWTtXRK5GFK/ApjqL660QiJuw1DMQNHbD1kom"
   );
 
 export default AWS;
