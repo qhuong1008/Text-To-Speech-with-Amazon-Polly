@@ -3,12 +3,11 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import data from "../../data";
 import { TopicApi, CourseApi } from "../../api/index";
 
 function NewTopicModal(props) {
   const params = useParams();
-  console.log(props);
+
   const [name, setName] = useState("");
   const topic = {
     topicName: "",
@@ -66,7 +65,6 @@ function NewTopicModal(props) {
         // handle notification
         props.onHide();
         alert("Tạo chủ đề thành công!");
-        console.log(data);
       }
     }
   };

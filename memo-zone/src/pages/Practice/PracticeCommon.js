@@ -1,6 +1,5 @@
 import style from "./style.scss";
 import GlobalStyle from "../GlobalStyle.scss";
-import data from "../../data";
 import AppHeader from "../../components/AppHeader";
 import { useState, useEffect } from "react";
 import { TopicApi, CourseApi, WordApi } from "../../api/index";
@@ -14,9 +13,7 @@ import { faAngleRight, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
 const PracticeCommon = (props) => {
   const params = useParams();
-  let course = data.find((courseItem) => {
-    if (courseItem.courseId == params.courseId) return courseItem;
-  });
+
   const [isLoading, setIsLoading] = useState(true);
   const [wordlist, setWordlist] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -197,7 +194,7 @@ const PracticeCommon = (props) => {
             {currentIndex == wordlist.length - 1 && (
               <Link
                 className="next-btn"
-                to={`/${params.accountId}/course/${course.courseId}/topic/${params.topicId}/complete`}
+                to={`/${params.accountId}/course/${params.courseId}/topic/${params.topicId}/complete`}
                 onClick={handleNextWord}
               >
                 <FontAwesomeIcon icon={faAngleRight} />

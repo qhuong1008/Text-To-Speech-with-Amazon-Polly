@@ -5,9 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import Topic from "../../components/Topic";
 import { useState, useEffect } from "react";
 import { TopicApi, CourseApi } from "../../api/index";
-import style from "./style.scss";
 
-import data from "../../data";
 const TopicList = (props) => {
   const params = useParams();
   const [isLoading, setIsLoading] = useState(true);

@@ -1,6 +1,5 @@
 import Scss_Signup from "./Scss_Signup.scss";
 import { useState, useEffect } from "react";
-import userdata from "../../userdata";
 import { AccountApi } from "../../api/index";
 const Login = () => {
   const [username, setUsername] = useState("");

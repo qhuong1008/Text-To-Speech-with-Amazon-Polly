@@ -1,8 +1,5 @@
 import AppHeader from "../../components/AppHeader";
-import data from "../../data";
 import { Link, useParams } from "react-router-dom";
-import style from "./style.scss";
-import GlobalStyle from "../GlobalStyle.scss";
 import Table from "react-bootstrap/Table";
 import { useEffect, useState } from "react";
 import { TopicApi, CourseApi, WordApi } from "../../api/index";

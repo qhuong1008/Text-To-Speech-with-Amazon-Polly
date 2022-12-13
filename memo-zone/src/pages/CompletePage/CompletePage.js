@@ -1,17 +1,11 @@
 import AppHeader from "../../components/AppHeader";
 import style from "./style.scss";
 import { Link, useParams } from "react-router-dom";
-import data from "../../data";
+import { useEffect, useState } from "react";
 
 const CompletePage = () => {
   const params = useParams();
-  console.log(params);
-  let course = data.find((courseItem) => {
-    if (courseItem.courseId == params.courseId) return courseItem;
-  });
-  let topic = course.courseTopics.find((topicItem) => {
-    if (topicItem.topicId == params.topicId) return topicItem;
-  });
+
   return (
     <div className="completepage-container">
       <AppHeader accountId={params.accountId} />
@@ -23,19 +17,19 @@ const CompletePage = () => {
         <div className="choice-label">Tiếp theo dành cho bạn</div>
         <div className="choice-btn">
           <Link
-            to={`/${params.accountId}/course/${course.courseId}/topic`}
+            to={`/${params.accountId}/course/${params.courseId}/topic`}
             className="choice-btn-item"
           >
             Học từ mới
           </Link>
           <Link
-            to={`/${params.accountId}/course/${course.courseId}/topic/${topic.topicId}/practicecommon`}
+            to={`/${params.accountId}/course/${params.courseId}/topic/${params.topicId}/practicecommon`}
             className="choice-btn-item"
           >
             Ôn tập thông thường
           </Link>
           <Link
-            to={`/${params.accountId}/course/${course.courseId}/topic/${topic.topicId}/practicelistening`}
+            to={`/${params.accountId}/course/${params.courseId}/topic/${params.topicId}/practicelistening`}
             className="choice-btn-item"
           >
             Ôn tập Listening
