@@ -4,7 +4,6 @@ import Form from "react-bootstrap/Form";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { TopicApi, CourseApi, WordApi } from "../../api/index";
-import data from "../../data";
 
 function NewWordModal(props) {
   const [english, setEnglish] = useState("");
@@ -58,7 +57,6 @@ function NewWordModal(props) {
         // handle notification
         props.onHide();
         alert("Tạo từ vựng thành công!");
-        console.log(data);
       }
     }
   };

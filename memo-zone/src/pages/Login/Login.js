@@ -1,10 +1,6 @@
-import Scss_Login from "./Scss_Login.scss";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import userdata from "../../userdata";
-import axios from "axios";
-import { faLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { AccountApi } from "../../api/index";
+import style from "./Scss_Login.scss";
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -67,7 +63,7 @@ const Login = () => {
             <span></span>
             <label>Password</label>
           </div>
-          <div className="pass">Forgot Password?</div>
+          {/* <div className="pass">Forgot Password?</div> */}
           <div className="login-btn" onClick={handleLogin}>
             Login
           </div>

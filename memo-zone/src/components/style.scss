@@ -46,7 +46,8 @@
 }
 
 .logo:hover {
-  background-color: white;
+  background-color: #7d8e95;
+  color: #ffbb98;
   .logo::after {
     content: "";
     width: 100px;
@@ -102,10 +103,11 @@
   border-radius: 0px 0px 10px 10px;
   cursor: pointer;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 600;
   color: black;
   &:hover {
-    background-color: #f6ab86;
+    background-color: #7d8e95;
+    color: #fbe0c3;
   }
 }
 .topicItem-container {
@@ -121,7 +123,8 @@
   font-weight: 700;
   border-radius: 10px;
   &:hover {
-    background-color: #fdae87;
+    color: #fbe0c3;
+    background-color: #7d8e95;
   }
 }
 .dropdown-menu {
@@ -133,8 +136,27 @@
   margin-right: 30px;
 }
 .dropdown-btn button {
-  background-color: #344648;
-  &:hover {
-    background-color: #3f4a4b;
+  background-color: #3f4a4b;
+  color: #fbe0c3;
+  &:hover, &:focus {
+    color: #fbe0c3;
+  background-color: #7d8e95;
   }
+}
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: var(--bs-dropdown-item-padding-y) var(--bs-dropdown-item-padding-x);
+  clear: both;
+  font-weight: 400;
+  color: #344648;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+.dropdown-item:hover, .dropdown-item:focus {
+  color: #fbe0c3;
+  background-color: #7d8e95;
 }

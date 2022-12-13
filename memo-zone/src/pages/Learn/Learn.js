@@ -1,6 +1,5 @@
 import style from "./style.scss";
 import GlobalStyle from "../GlobalStyle.scss";
-import data from "../../data";
 import AppHeader from "../../components/AppHeader";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";

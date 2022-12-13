@@ -1,6 +1,5 @@
 import style from "./style.scss";
 import AppHeader from "../../components/AppHeader";
-import data from "../../data";
 import Course from "../../components/Course";
 import { useParams } from "react-router-dom";
 import { CourseApi } from "../../api/index";

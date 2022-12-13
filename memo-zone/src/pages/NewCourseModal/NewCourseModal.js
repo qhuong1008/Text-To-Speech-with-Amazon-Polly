@@ -2,7 +2,6 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import { useState, useEffect } from "react";
-import data from "../../data";
 import { TopicApi, CourseApi, WordApi } from "../../api/index";
 
 function NewCourseModal(props) {

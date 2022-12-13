@@ -1,8 +1,9 @@
 import style from "./style.scss";
 import GlobalStyle from "../GlobalStyle.scss";
-import data from "../../data";
 import AppHeader from "../../components/AppHeader";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { TopicApi, CourseApi, WordApi } from "../../api/index";
+import Loading from "../../pages/Loading/Loading";
 import { Link, useParams } from "react-router-dom";
 import AWS from "aws-sdk";
 import $ from "jquery";
@@ -12,25 +13,30 @@ import { faAngleRight, faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
 const PracticeListening = (props) => {
   const params = useParams();
-  let course = data.find((courseItem) => {
-    if (courseItem.courseId == params.courseId) return courseItem;
-  });
-  let course_name = course.courseName;
-  let topic = course.courseTopics.find((topicItem) => {
-    if (topicItem.topicId == params.topicId) return topicItem;
-  });
-  let topic_name = topic.topicName;
-  let wordlist = topic.wordlist;
-  console.log(course);
-  let course_id = course.id;
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [wordlist, setWordlist] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   var word = wordlist[currentIndex];
+  const loadWordList = () => {
+    setIsLoading(true);
+    WordApi.getWordByTopicId(params.topicId)
+      .then((response) => {
+        setWordlist(response.data);
+      })
+      .then(() => setIsLoading(false))
+      .catch((error) => console.log(error));
+  };
+
+  const [wordEng, setWordEng] = useState("");
+  const [wordPronounce, setWordPronounce] = useState("");
+  const [wordViet, setWordViet] = useState("");
 
   const [inputValue, setInputValue] = useState("");
   const [incorrect, setIncorrect] = useState(false);
 
   const handleNextWord = () => {
-    if (inputValue == word.eng.toLowerCase()) {
+    if (inputValue == wordlist[currentIndex].eng.toLowerCase()) {
       setCurrentIndex(currentIndex + 1);
       setInputValue("");
       setIncorrect(false);
@@ -38,6 +44,9 @@ const PracticeListening = (props) => {
       setIncorrect(true);
     }
   };
+  useEffect(() => {
+    loadWordList();
+  }, []);
 
   var AWS = require("aws-sdk");
   var $ = require("jquery");
@@ -170,8 +179,6 @@ const PracticeListening = (props) => {
             </ul>
           </div>
           <div className="wordItem">
-            {/* <div className="next-btn" onClick={handleNextWord}>
-          </div> */}
             {currentIndex != wordlist.length - 1 && (
               <div className="next-btn" onClick={handleNextWord}>
                 <FontAwesomeIcon className="icon" icon={faAngleRight} />
@@ -181,7 +188,7 @@ const PracticeListening = (props) => {
             {currentIndex == wordlist.length - 1 && (
               <Link
                 className="next-btn"
-                to={`/course/${course.courseId}/topic/${topic.topicId}/complete`}
+                to={`/${params.accountId}/course/${params.courseId}/topic/${params.topicId}/complete`}
                 onClick={handleNextWord}
               >
                 <FontAwesomeIcon icon={faAngleRight} />

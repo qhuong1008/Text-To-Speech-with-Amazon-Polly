@@ -6,7 +6,6 @@ import style from "./style.scss";
 import Form from "react-bootstrap/Form";
 import MyVerticallyCenteredModal from "../MyVerticallyCenteredModal/MyVerticallyCenteredModal";
 
-import data from "../../data";
 const EditMyCourse = () => {
   const params = useParams();
   const [modalShow, setModalShow] = React.useState(false);
